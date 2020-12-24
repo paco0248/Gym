@@ -14,6 +14,7 @@ public class Member {
     public Member(String p, String fn, String ln1, String ln2,
                   int Id, Date jd, Date ed, String ms, Array ph, Array ma){
         photo = p;
+	photo  =  p;
         firstName = fn;
         lastName1 = ln1;
         lastName2 = ln2;
