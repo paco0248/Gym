@@ -1,0 +1,17 @@
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class GymProject23Dic20Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(GymProject23Dic20Application.class, args);
+
+        Member a = new Member();
+
+        System.out.println(a.getFullName());
+
+    }
+}
