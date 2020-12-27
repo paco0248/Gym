@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Payment {
 
@@ -14,9 +15,16 @@ public class Payment {
     int PaidAmount;
     int dueAmount;
     Date lastPayment;
-    int transaccionID;
-    int nextTransaccionID;
-    Payment[] a = new Payment[nextTransaccionID + 1];
+    int transaccionID = 0;
+    private static int nextTransactionID = 1;
+    int nextTransaccionID = 1;
+    int instanciaDelPago = 0;
+    private int nextInstanciaDelPago = 1;
+    int balance = 0;
+    //Payment[] a = new Payment[nextTransaccionID + 1];
+    String[] paymentInfo = new String[4];
+    Date paymentDate;
+    GregorianCalendar calendar1 = new GregorianCalendar();
 
     public void setAmount(int amount) {
         this.amount = amount;
@@ -30,6 +38,29 @@ public class Payment {
         Payment[alfa] = new Payment();
         nextTransaccionID++
     }*/
+    /*public int[] viewPaymentInfo(){
+        return
+    }*/
+    public void setPaymentDate(){
+        paymentDate = new Date();
+    }
 
-
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+    public int setInstanciaDelPago(){
+        instanciaDelPago = nextInstanciaDelPago;
+        nextInstanciaDelPago++;
+        return instanciaDelPago;
+    }
+    public int getInstanciaDelPago(){
+        return instanciaDelPago;
+    }
+    public void setTransaccionID(){
+        transaccionID = nextTransactionID;
+        nextTransactionID++;
+    }
+    public int getTransaccionID(){
+        return transaccionID;
+    }
 }
