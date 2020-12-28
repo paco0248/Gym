@@ -13,16 +13,12 @@ public class GymProject23Dic20Application {
 
         Member[] members = new Member[10];
         members[0] = new Member();
-        members[0].setFullName("pedro","perez","mendez");
+        members[0].setFullName("pedro","perrz","glez");
+        members[0].setJoiningDate(2020,11,11);
         members[0].setGymId();
-        members[0].setJoiningDate(2020, 11, 25);
+        members[0].pay(500);
 
-        members[1] = new Member();
-        members[1].setFullName("pepe","gomez","glez");
-        members[1].setGymId();
-        members[1].setJoiningDate(2020,12, 11);
+        System.out.println(members[0].getFullName() + members[0].getGymId());
 
-        for(int i)
-        System.out.println(e.);
     }
 }

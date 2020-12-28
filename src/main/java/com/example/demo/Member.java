@@ -4,10 +4,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 public class Member {
     public Member(){ }//default constructor
-    public Member(String p, String fn, String ln1, String ln2,
+    public Member(String fn, String ln1, String ln2,
                   int Id, GregorianCalendar jd, GregorianCalendar ed, String ms,
                   Payment ph, int year, int month, int day){
-        photo = p;
         firstName = fn;
         lastName1 = ln1;
         lastName2 = ln2;
@@ -16,7 +15,7 @@ public class Member {
         expireDate = ed;
         memberStatus = ms;
         paymentHistory = ph;
-        GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
+        GregorianCalendar calendar = new GregorianCalendar();
     }
 
     public void setFullName(String fn, String ln1, String ln2){
@@ -25,12 +24,14 @@ public class Member {
         lastName2 = ln2;
         fullName =  fn + " " + ln1 + " " + ln2;
     }
+
     public String getFullName(){
         return fullName;
     }
     /*public ArrayList viewMember(){
         return
     }*/
+
     public void setGymId() {
         GymId = nextId; // set id to next available id
         nextId++;
@@ -54,6 +55,7 @@ public class Member {
     public GregorianCalendar getExpireDate(){
         return expireDate;
     }
+
     public void pay(int amount){
         int dueAmount = 500;
         balance = amount - dueAmount;
@@ -73,10 +75,12 @@ public class Member {
         paymentObjectCreationCounter++;
         transaccionID++;
     }
+
     public Payment getMemberPaymentHistory(){
         for(int i =0; i<4; i++) {
             System.out.println("payment made " + memberPaymentHistory[i].paymentDate +
-                    " Transaction ID:  " + paymentObjectCreationCounter +" instancia: "+ memberPaymentHistory[i].getTransaccionID());
+                    " Transaction ID:  " + paymentObjectCreationCounter +" instancia: "
+                    + memberPaymentHistory[i].getTransaccionID());
         }
         return paymentHistory;
     }
@@ -86,7 +90,7 @@ public class Member {
     }
 
     public String checkMemberStatus(){
-        GregorianCalendar currentDay = new GregorianCalendar(2021,5,20);
+        GregorianCalendar currentDay = new GregorianCalendar();
         if ( currentDay.after(expireDate )){ //test method
             System.out.println("membership Expired");
         } //and deny access
