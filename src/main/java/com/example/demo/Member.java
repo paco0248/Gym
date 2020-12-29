@@ -3,7 +3,29 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 public class Member {
-    public Member(){ }//default constructor
+
+
+    public Member(int yearDob, int monthDob, int dayDob){
+        dob = new GregorianCalendar(yearDob, monthDob, dayDob);
+        dob.set(yearDob, monthDob, dayDob);
+        joiningDATE = new Date();
+        expireDate = new GregorianCalendar();
+        expireDate.add(Calendar.MONTH, 1);
+
+        for(int i =0; i < 20; i++) {
+            memberPaymentHistory[i] = new Payment(5, 5, 5);
+        }
+    }
+    public Member(){
+        joiningDATE = new Date();
+        expireDate = new GregorianCalendar();
+        expireDate.add(Calendar.MONTH, 1);
+
+        for(int i =0; i < 20; i++) {
+            memberPaymentHistory[i] = new Payment(5, 5, 5);
+        }
+    }
+
     public Member(String fn, String ln1, String ln2,
                   int Id, GregorianCalendar jd, GregorianCalendar ed, String ms,
                   Payment ph, int year, int month, int day){
@@ -15,8 +37,9 @@ public class Member {
         expireDate = ed;
         memberStatus = ms;
         paymentHistory = ph;
-        GregorianCalendar calendar = new GregorianCalendar();
+        dob = new GregorianCalendar(year, month, day);
     }
+
 
     public void setFullName(String fn, String ln1, String ln2){
         firstName = fn;
@@ -116,12 +139,19 @@ public class Member {
     public int getBalance() {
         return balance;
     }
+    public GregorianCalendar getDob(){
+        return dob;
+    }
+    public void setDob(int day, int month, int year){
+        dob.set( day, month, year);
+        System.out.println("Update Successful");
+    }
 
-    private String photo;
     private String fullName;
     private String firstName;
     private String lastName1;
     private String lastName2;
+    private GregorianCalendar dob;
 
     private int GymId;
     private static int nextId = 1;
@@ -135,11 +165,12 @@ public class Member {
     private Date joiningDATE;//Joining date
 
     private Payment paymentHistory; //solo esta en uno de los constructor
-    private Payment[] memberPaymentHistory = new Payment[20]; //hmmm
+    Payment[] memberPaymentHistory = new Payment[20]; //hmmm
     private static int transaccionID = 1;
     private int nextTransaccionID = 1;
     private Date lastPayment;
     private int paymentObjectCreationCounter = 0;
     int balance = 0;
+
 
 }
