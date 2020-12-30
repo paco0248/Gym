@@ -157,7 +157,7 @@ public class Member {
     private String firstName;
     private String lastName1;
     private String lastName2;
-    private GregorianCalendar dob;
+    private GregorianCalendar dob = new GregorianCalendar(1970, 0, 1);
 
     private int GymId;
     private static int nextId = 1;

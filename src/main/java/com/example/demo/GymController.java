@@ -61,14 +61,14 @@ public class  GymController {
     {
         System.out.println("deleteMember method invoked(delete)");
         members[i] = null;
-        Member[] temp = new Member[members.length-1];
+      /*  Member[] temp = new Member[members.length-1];
         for (int a = 0; i < 10; i++){
             if(members[a] != null){
                 temp[a] = members[a];
             }
         }
         members = new Member[temp.length];
-        members = temp;
+        members = temp.clone(); */
         return members;
     }
     private Member[] members;
