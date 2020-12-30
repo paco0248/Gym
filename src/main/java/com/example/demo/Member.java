@@ -160,7 +160,7 @@ public class Member {
     private GregorianCalendar dob = new GregorianCalendar(1970, 0, 1);
 
     private int GymId;
-    private static int nextId = 1;
+    private static int nextId = 0;
 
     private String memberStatus = "please verify...";
 

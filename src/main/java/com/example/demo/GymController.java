@@ -1,11 +1,7 @@
 package com.example.demo;
-
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-
 @RestController
 public class  GymController {
     public GymController(){
@@ -18,7 +14,6 @@ public class  GymController {
             }
         }
     }
-
     @GetMapping("/createMember")
     public Member[] greeting(@RequestParam(value = "firstName") String firstName,
                              @RequestParam(value = "lastName1") String lastName,
@@ -57,18 +52,21 @@ public class  GymController {
         return memberMethodUtility;
     }
     @GetMapping("/deleteMember")
-    public Member[] greetingC(@RequestParam(value = "index") int i)
+    public Member[] greetingC(@RequestParam(value = "index") int x)
     {
         System.out.println("deleteMember method invoked(delete)");
-        members[i] = null;
-      /*  Member[] temp = new Member[members.length-1];
-        for (int a = 0; i < 10; i++){
-            if(members[a] != null){
-                temp[a] = members[a];
+        members[x] = null;  //TODO FIX
+       Member[] temp = new Member[members.length-1];
+       int z = 0;
+       for (int i = 0; i < members.length; i++){
+           if(members[i] != null ){
+                temp[z] = members[i];
+               z++;
             }
+           System.out.println(1);
         }
         members = new Member[temp.length];
-        members = temp.clone(); */
+        members = temp;
         return members;
     }
     private Member[] members;
