@@ -12,5 +12,9 @@ public class GymProject23Dic20Application {
         SpringApplication.run(GymProject23Dic20Application.class, args);
 
 
+        System.out.println();
+
+
+
     }
 }

@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 public class Member {
 
 
+
     public Member(int yearDob, int monthDob, int dayDob){
         dob = new GregorianCalendar(yearDob, monthDob, dayDob);
         dob.set(yearDob, monthDob, dayDob);
@@ -46,6 +47,9 @@ public class Member {
         lastName1 = ln1;
         lastName2 = ln2;
         fullName =  fn + " " + ln1 + " " + ln2;
+    }
+    public void setFullName(){
+        fullName =  "Default Member Name";
     }
 
     public String getFullName(){
@@ -146,6 +150,8 @@ public class Member {
         dob.set( day, month, year);
         System.out.println("Update Successful");
     }
+
+
 
     private String fullName;
     private String firstName;

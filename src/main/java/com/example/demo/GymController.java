@@ -8,9 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class  GymController {
-
-    /*private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();*/
+    public GymController(){
+         members = new Member[10];
+        {
+            for (int i = 0; i < 10; i++) {
+                members[i] = new Member();
+                members[i].setFullName();
+                members[i].setGymId();
+            }
+        }
+    }
 
     @GetMapping("/createMember")
     public Member[] greeting(@RequestParam(value = "firstName") String firstName,
@@ -18,17 +25,14 @@ public class  GymController {
                              @RequestParam(value = "lastName2") String lastName2,
                              @RequestParam(value = "day") int day,
                              @RequestParam(value = "month") int month,
-                             @RequestParam(value = "year") int year)
+                             @RequestParam(value = "year") int year,
+                             @RequestParam(value = "index") int i)
     {
-        System.out.println("getMember method");
-
-        members[0] = new Member(day, month, year);
-        members[0].setFullName(firstName,lastName,lastName2);
-       // members[0].setJoiningDate(2020,11,11);
-        members[0].setGymId();
+        members[i] = new Member();
+        members[i].setFullName(firstName,lastName,lastName2);
+        members[i].setGymId();
         return members;
     }
-
     @GetMapping("/modifyMember")
     public Member[] greetingA(@RequestParam(value = "firstName") String firstName,
                              @RequestParam(value = "lastName1") String lastName,
@@ -38,31 +42,35 @@ public class  GymController {
                              @RequestParam(value = "year") int year,
                               @RequestParam(value = "index") int i)
     {
-        System.out.println("modifyMember method invoked");
-        members[i] = new Member(day, month, year);   // SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT
         members[i].setFullName(firstName, lastName, lastName2);
         members[i].setDob(day, month, year);
         members[i].setGymId();
-        members[i].
         return  members;
     }
     @GetMapping("/getMember")
-    public Member[] greetingB(@RequestParam(value = "firstName") String firstName,
-                              @RequestParam(value = "lastName1") String lastName,
-                              @RequestParam(value = "lastName2") String lastName2,
-                              @RequestParam(value = "day") int day,
-                              @RequestParam(value = "month") int month,
-                              @RequestParam(value = "year") int year,
-                              @RequestParam(value = "index") int i)
+    public Member[] greetingB(@RequestParam(value = "index") int i)
     {
-        System.out.println("modifyMember method invoked");
-        Member[] getMemberMethodUtility = new Member[0];
-        getMemberMethodUtility[0] = new Member();
-        getMemberMethodUtility[0] = members[i];
-        return getMemberMethodUtility;
+        System.out.println("getMember method invoked(read)");
+        Member[] memberMethodUtility = new Member[10];
+        memberMethodUtility[0] = new Member();
+        memberMethodUtility[0] = members[i];
+        return memberMethodUtility;
     }
-
-    Member[] members = new Member[10];
-
+    @GetMapping("/deleteMember")
+    public Member[] greetingC(@RequestParam(value = "index") int i)
+    {
+        System.out.println("deleteMember method invoked(delete)");
+        members[i] = null;
+        Member[] temp = new Member[members.length-1];
+        for (int a = 0; i < 10; i++){
+            if(members[a] != null){
+                temp[a] = members[a];
+            }
+        }
+        members = new Member[temp.length];
+        members = temp;
+        return members;
+    }
+    private Member[] members;
 
 }
