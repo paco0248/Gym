@@ -21,11 +21,10 @@ public class  GymController {
                              @RequestParam(value = "day") int day,
                              @RequestParam(value = "month") int month,
                              @RequestParam(value = "year") int year,
-                             @RequestParam(value = "index") int i)
-    {
+                             @RequestParam(value = "index") int i) {
         members[i] = new Member();
         members[i].setFullName(firstName,lastName,lastName2);
-        members[i].setGymId(); //TODO BOD Breaks Methods?
+        members[i].setGymId(); //TODO BOD Breaks Methods? and convert to void.
         return members;
     }
     @GetMapping("/modifyMember")
@@ -35,16 +34,14 @@ public class  GymController {
                              @RequestParam(value = "day") int day,
                              @RequestParam(value = "month") int month,
                              @RequestParam(value = "year") int year,
-                              @RequestParam(value = "index") int i)
-    {
+                              @RequestParam(value = "index") int i) {
         members[i].setFullName(firstName, lastName, lastName2);
         members[i].setDob(day, month, year);
         members[i].setGymId();
         return  members;
     }
     @GetMapping("/getMember")
-    public Member[] greetingB(@RequestParam(value = "index") int i)
-    {
+    public Member[] greetingB(@RequestParam(value = "index") int i) {
         System.out.println("getMember method invoked(read)");
         Member[] memberMethodUtility = new Member[10];
         memberMethodUtility[0] = new Member();
@@ -52,8 +49,7 @@ public class  GymController {
         return memberMethodUtility;
     }
     @GetMapping("/deleteMember")
-    public Member[] greetingC(@RequestParam(value = "index") int x)
-    {
+    public Member[] greetingC(@RequestParam(value = "index") int x) {
         System.out.println("deleteMember method invoked(delete)");
         members[x] = null;  //TODO FIX
        Member[] temp = new Member[members.length-1];
@@ -69,6 +65,16 @@ public class  GymController {
         members = temp;
         return members;
     }
+    @GetMapping("/makePayment")
+    public Payment greetingD(@RequestParam(value = "name", defaultValue = "World") int index,
+                             @RequestParam(value = "amount", defaultValue = "World") int amount) {
+            System.out.println("payMethod");
+            members[0].pay(amount);
+            members[0].
+            return
+            //return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        }
     private Member[] members;
+    private Payment payment;
 
 }

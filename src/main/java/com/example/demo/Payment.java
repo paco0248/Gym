@@ -1,10 +1,7 @@
 package com.example.demo;
-
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 public class Payment {
-
     public Payment(int anAmount, int aDueAmount, int aTransaccionId){
     amount = anAmount;
     dueAmount = aDueAmount;
@@ -29,10 +26,9 @@ public class Payment {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    public double getAmount(){
+    public double getAmount() {
         return amount;
     }
-
     /*public void memberPay(Member x, double anAmount){
         int alfa = transaccionID;
         Payment[alfa] = new Payment();
@@ -44,7 +40,6 @@ public class Payment {
     public void setPaymentDate(){
         paymentDate = new Date();
     }
-
     public Date getPaymentDate() {
         return paymentDate;
     }

@@ -4,15 +4,12 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 public class Member {
 
-
-
     public Member(int yearDob, int monthDob, int dayDob){
         dob = new GregorianCalendar(yearDob, monthDob, dayDob);
         dob.set(yearDob, monthDob, dayDob);
         joiningDATE = new Date();
         expireDate = new GregorianCalendar();
         expireDate.add(Calendar.MONTH, 1);
-
         for(int i =0; i < 20; i++) {
             memberPaymentHistory[i] = new Payment(5, 5, 5);
         }
@@ -21,12 +18,10 @@ public class Member {
         joiningDATE = new Date();
         expireDate = new GregorianCalendar();
         expireDate.add(Calendar.MONTH, 1);
-
         for(int i =0; i < 20; i++) {
             memberPaymentHistory[i] = new Payment(5, 5, 5);
         }
     }
-
     public Member(String fn, String ln1, String ln2,
                   int Id, GregorianCalendar jd, GregorianCalendar ed, String ms,
                   Payment ph, int year, int month, int day){
@@ -40,8 +35,6 @@ public class Member {
         paymentHistory = ph;
         dob = new GregorianCalendar(year, month, day);
     }
-
-
     public void setFullName(String fn, String ln1, String ln2){
         firstName = fn;
         lastName1 = ln1;
@@ -51,23 +44,19 @@ public class Member {
     public void setFullName(){
         fullName =  "Default Member Name";
     }
-
     public String getFullName(){
         return fullName;
     }
     /*public ArrayList viewMember(){
         return
     }*/
-
     public void setGymId() {
         GymId = nextId; // set id to next available id
         nextId++;
     }
-
     public int getGymId(){
         return GymId;
     }
-
     public void setJoiningDate(int year, int month, int day) {
         joiningDate = new GregorianCalendar (year, month-1, day);
         joiningDate.set(year, month-1, day);
@@ -78,11 +67,9 @@ public class Member {
     public Date getJoiningDate(){
         return joiningDATE;
     }
-
     public GregorianCalendar getExpireDate(){
         return expireDate;
     }
-
     public void pay(int amount){
         int dueAmount = 500;
         balance = amount - dueAmount;
@@ -102,7 +89,6 @@ public class Member {
         paymentObjectCreationCounter++;
         transaccionID++;
     }
-
     public Payment getMemberPaymentHistory(){
         for(int i =0; i<4; i++) {
             System.out.println("payment made " + memberPaymentHistory[i].paymentDate +
@@ -111,11 +97,9 @@ public class Member {
         }
         return paymentHistory;
     }
-
     public Date getLastPayment(){
         return lastPayment;
     }
-
     public String checkMemberStatus(){
         GregorianCalendar currentDay = new GregorianCalendar();
         if ( currentDay.after(expireDate )){ //test method
@@ -139,7 +123,6 @@ public class Member {
     public static int getTransaccionID(){
         return transaccionID;
     }
-
     public int getBalance() {
         return balance;
     }
@@ -151,8 +134,6 @@ public class Member {
         System.out.println("Update Successful");
     }
 
-
-
     private String fullName;
     private String firstName;
     private String lastName1;
@@ -163,7 +144,6 @@ public class Member {
     private static int nextId = 0;
 
     private String memberStatus = "please verify...";
-
 
     private GregorianCalendar joiningDate;
     private GregorianCalendar expireDate;
@@ -177,6 +157,5 @@ public class Member {
     private Date lastPayment;
     private int paymentObjectCreationCounter = 0;
     int balance = 0;
-
 
 }
