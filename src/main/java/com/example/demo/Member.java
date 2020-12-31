@@ -3,7 +3,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 public class Member {
-
     public Member(int yearDob, int monthDob, int dayDob){
         dob = new GregorianCalendar(yearDob, monthDob, dayDob);
         dob.set(yearDob, monthDob, dayDob);
