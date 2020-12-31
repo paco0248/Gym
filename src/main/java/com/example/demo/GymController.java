@@ -25,7 +25,7 @@ public class  GymController {
     {
         members[i] = new Member();
         members[i].setFullName(firstName,lastName,lastName2);
-        members[i].setGymId();
+        members[i].setGymId(); //TODO BOD Breaks Methods?
         return members;
     }
     @GetMapping("/modifyMember")
