@@ -21,19 +21,6 @@ public class Member {
             memberPaymentHistory[i] = new Payment(5, 5, 5);
         }
     }
-    public Member(String fn, String ln1, String ln2,
-                  int Id, GregorianCalendar jd, GregorianCalendar ed, String ms,
-                  Payment ph, int year, int month, int day){
-        firstName = fn;
-        lastName1 = ln1;
-        lastName2 = ln2;
-        GymId = Id;
-        joiningDate = jd;
-        expireDate = ed;
-        memberStatus = ms;
-        paymentHistory = ph;
-        dob = new GregorianCalendar(year, month, day);
-    }
     public void setFullName(String fn, String ln1, String ln2){
         firstName = fn;
         lastName1 = ln1;
@@ -73,12 +60,10 @@ public class Member {
         int dueAmount = 500;
         balance = amount - dueAmount;
         memberPaymentHistory[paymentObjectCreationCounter] = new Payment(amount, dueAmount, transaccionID );
-        memberPaymentHistory[paymentObjectCreationCounter].setPaymentDate();
         memberPaymentHistory[paymentObjectCreationCounter].setInstanciaDelPago();
-        memberPaymentHistory[paymentObjectCreationCounter].setTransaccionID();
         lastPayment = memberPaymentHistory[paymentObjectCreationCounter].getPaymentDate();
         expireDate.add(Calendar.MONTH, 1);
-        //System.out.println(memberPaymentHistory[0].paymentDate.toString());
+        //todo return balance after payment, wont be a void method then?
         if (balance >= 0){
             memberStatus = "Ok";
         }
@@ -88,6 +73,10 @@ public class Member {
         paymentObjectCreationCounter++;
         transaccionID++;
     }
+    public Payment[] getMemberPaymentHistory(int index){
+        return memberPaymentHistory;            //TODO borrar uno de los 2 metodos
+    }
+
     public Payment getMemberPaymentHistory(){
         for(int i =0; i<4; i++) {
             System.out.println("payment made " + memberPaymentHistory[i].paymentDate +
@@ -97,6 +86,7 @@ public class Member {
         return paymentHistory;
     }
     public Date getLastPayment(){
+
         return lastPayment;
     }
     public String checkMemberStatus(){

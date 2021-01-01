@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class  GymController {
-    public GymController(){
+    public GymController(){    //TODO void methods pueden convertirse a VOID, despues hacer un get method para corroborrar accion
          members = new Member[10];
         {
             for (int i = 0; i < 10; i++) {
@@ -69,12 +69,22 @@ public class  GymController {
     public Payment greetingD(@RequestParam(value = "name", defaultValue = "World") int index,
                              @RequestParam(value = "amount", defaultValue = "World") int amount) {
             System.out.println("payMethod");
-            members[0].pay(amount);
-            members[0].
-            return
+            members[index].pay(amount);
+            //members[0].memberPaymentHistory;
             //return new Greeting(counter.incrementAndGet(), String.format(template, name));
         }
+
+    @GetMapping("/getPayment")
+    public Payment[] greetingE(@RequestParam(value = "name", defaultValue = "World") int index) {
+        System.out.println("getPayment");
+        payment = members[index].getMemberPaymentHistory(index);
+        return payment;
+
+        //return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    }
+
+
     private Member[] members;
-    private Payment payment;
+    private Payment[] payment;
 
 }
