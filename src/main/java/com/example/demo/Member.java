@@ -1,24 +1,17 @@
 package com.example.demo;
+import com.fasterxml.jackson.core.JsonToken;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 public class Member {
-    public Member(int yearDob, int monthDob, int dayDob){
-        dob = new GregorianCalendar(yearDob, monthDob, dayDob);
-        dob.set(yearDob, monthDob, dayDob);
-        joiningDATE = new Date();
-        expireDate = new GregorianCalendar();
-        expireDate.add(Calendar.MONTH, 1);
-        for(int i =0; i < 20; i++) {
-            memberPaymentHistory[i] = new Payment(5, 5, 5);
-        }
-    }
+
     public Member(){
         joiningDATE = new Date();
         expireDate = new GregorianCalendar();
         expireDate.add(Calendar.MONTH, 1);
         for(int i =0; i < 20; i++) {
-            memberPaymentHistory[i] = new Payment(5, 5, 5);
+            memberPaymentHistory[i] = new Payment(5, 5,  "defaulty name", 0);
         }
     }
     public void setFullName(String fn, String ln1, String ln2){
@@ -27,9 +20,10 @@ public class Member {
         lastName2 = ln2;
         fullName =  fn + " " + ln1 + " " + ln2;
     }
-    public void setFullName(){
-        fullName =  "Default Member Name";
+    public void setFullName(String memberName){
+        fullName = memberName;
     }
+
     public String getFullName(){
         return fullName;
     }
@@ -56,12 +50,12 @@ public class Member {
     public GregorianCalendar getExpireDate(){
         return expireDate;
     }
+
     public void pay(int amount){
         int dueAmount = 500;
         balance = amount - dueAmount;
-        memberPaymentHistory[paymentObjectCreationCounter] = new Payment(amount, dueAmount, transaccionID );
-        memberPaymentHistory[paymentObjectCreationCounter].setInstanciaDelPago();
-        lastPayment = memberPaymentHistory[paymentObjectCreationCounter].getPaymentDate();
+        memberPaymentHistory[pOCC].setAmount(amount);
+        memberPaymentHistory[pOCC].setInstanciaDelPago();
         expireDate.add(Calendar.MONTH, 1);
         //todo return balance after payment, wont be a void method then?
         if (balance >= 0){
@@ -70,21 +64,26 @@ public class Member {
         else {
             memberStatus = "There is an outstanding balance.";
         }
-        paymentObjectCreationCounter++;
+        pOCC++;
         transaccionID++;
     }
+    public Payment getMemberPayment(){ //todo if no previous payment figure out how to relay message as opposed of getting null object
+        return memberPaymentHistory[pOCC-1];
+    }
+
+
     public Payment[] getMemberPaymentHistory(int index){
         return memberPaymentHistory;            //TODO borrar uno de los 2 metodos
     }
 
-    public Payment getMemberPaymentHistory(){
+ /*   public Payment getMemberPaymentHistory(){ //todo borrar
         for(int i =0; i<4; i++) {
             System.out.println("payment made " + memberPaymentHistory[i].paymentDate +
-                    " Transaction ID:  " + paymentObjectCreationCounter +" instancia: "
+                    " Transaction ID:  " + pOCC +" instancia: "
                     + memberPaymentHistory[i].getTransaccionID());
         }
         return paymentHistory;
-    }
+    }  */
     public Date getLastPayment(){
 
         return lastPayment;
@@ -144,7 +143,9 @@ public class Member {
     private static int transaccionID = 1;
     private int nextTransaccionID = 1;
     private Date lastPayment;
-    private int paymentObjectCreationCounter = 0;
+    private int pOCC  = 0; //todo pOCC = paymentObjectCreationCounter
     int balance = 0;
+
+
 
 }

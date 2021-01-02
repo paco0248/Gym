@@ -9,7 +9,7 @@ public class  GymController {
         {
             for (int i = 0; i < 10; i++) {
                 members[i] = new Member();
-                members[i].setFullName();
+                members[i].setFullName("fuckfuck");
                 members[i].setGymId();
             }
         }
@@ -70,14 +70,16 @@ public class  GymController {
                              @RequestParam(value = "amount", defaultValue = "World") int amount) {
             System.out.println("payMethod");
             members[index].pay(amount);
-            //members[0].memberPaymentHistory;
-            //return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        members[index].getMemberPayment().setMemberName(members[index].getFullName());
+        //return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        return members[index].getMemberPayment();
         }
 
     @GetMapping("/getPayment")
     public Payment[] greetingE(@RequestParam(value = "name", defaultValue = "World") int index) {
         System.out.println("getPayment");
         payment = members[index].getMemberPaymentHistory(index);
+
         return payment;
 
         //return new Greeting(counter.incrementAndGet(), String.format(template, name));
