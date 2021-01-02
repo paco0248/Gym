@@ -14,7 +14,7 @@ public class  GymController {
             }
         }
     }
-    @GetMapping("/createMember")
+    @GetMapping("/createMember")    // TODO metodo funciona cuando se crean objetos
     public Member[] greeting(@RequestParam(value = "firstName") String firstName,
                              @RequestParam(value = "lastName1") String lastName,
                              @RequestParam(value = "lastName2") String lastName2,
@@ -28,7 +28,7 @@ public class  GymController {
         return members;
     }
     @GetMapping("/modifyMember")
-    public Member[] greetingA(@RequestParam(value = "firstName") String firstName,
+    public Member greetingA(@RequestParam(value = "firstName") String firstName,
                              @RequestParam(value = "lastName1") String lastName,
                              @RequestParam(value = "lastName2") String lastName2,
                              @RequestParam(value = "day") int day,
@@ -38,15 +38,12 @@ public class  GymController {
         members[i].setFullName(firstName, lastName, lastName2);
         members[i].setDob(day, month, year);
         members[i].setGymId();
-        return  members;
+        return  members[i];
     }
     @GetMapping("/getMember")
-    public Member[] greetingB(@RequestParam(value = "index") int i) {
+    public Member greetingB(@RequestParam(value = "index") int i) {
         System.out.println("getMember method invoked(read)");
-        Member[] memberMethodUtility = new Member[10];
-        memberMethodUtility[0] = new Member();
-        memberMethodUtility[0] = members[i];
-        return memberMethodUtility;
+        return members[i];
     }
     @GetMapping("/deleteMember")
     public Member[] greetingC(@RequestParam(value = "index") int x) {
@@ -70,23 +67,49 @@ public class  GymController {
                              @RequestParam(value = "amount", defaultValue = "World") int amount) {
             System.out.println("payMethod");
             members[index].pay(amount);
-        members[index].getMemberPayment().setMemberName(members[index].getFullName());
-        //return new Greeting(counter.incrementAndGet(), String.format(template, name));
-        return members[index].getMemberPayment();
+        members[index].getMemberPayment(0).setMemberName(members[index].getFullName());
+        return members[index].getMemberPayment(0);
         }
 
     @GetMapping("/getPayment")
-    public Payment[] greetingE(@RequestParam(value = "name", defaultValue = "World") int index) {
+    public Payment greetingE(@RequestParam(value = "name", defaultValue = "World") int index) {
         System.out.println("getPayment");
-        payment = members[index].getMemberPaymentHistory(index);
-
-        return payment;
-
-        //return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        members[index].getMemberPayment(0);  // TODO porqur cero
+        return members[index].getMemberPayment(0);
+    }
+    @GetMapping("/modifyPayment")
+    public Payment greetingF(@RequestParam(value = "name", defaultValue = "World") int index,
+                             @RequestParam(value = "wichPaymentToModify", defaultValue = "World") int secondaryIndex,
+                             @RequestParam(value = "changeAmount", defaultValue = "World") int newAmount,
+                             @RequestParam(value = "changeBalance", defaultValue = "World") int newBalance) {
+        System.out.println("modifyPayment");
+        members[index].memberPaymentHistory[secondaryIndex].setAmount(newAmount);
+        members[index].memberPaymentHistory[secondaryIndex].setBalance(newBalance);
+        members[index].memberPaymentHistory[secondaryIndex].setPaymentDate(); //TODO overload method
+        members[index].getMemberPayment(secondaryIndex);  // TODO porqur cero
+        return members[index].getMemberPayment(secondaryIndex);
+    }
+    @GetMapping("/deletePayment")
+    public Payment[] greetingH(@RequestParam(value = "whatMember", defaultValue = "World") int index,
+                             @RequestParam(value = "whatPayment", defaultValue = "World") int secIndex){
+        System.out.println("payment deleted");
+        members[index].setMemberPaymentToNull(secIndex);
+        Payment[] temp = new Payment[members[index].memberPaymentHistory.length-1];
+        int z = 0;
+        for (int i = 0; i < members[index].memberPaymentHistory.length; i++){
+            if(members[index].memberPaymentHistory[i] != null){
+                temp[z] = members[index].memberPaymentHistory[i];
+                z++;
+            }
+        }
+        members[index].setMemberPaymentHistory(temp);
+    return members[index].memberPaymentHistory;
     }
 
 
+
+
     private Member[] members;
-    private Payment[] payment;
+    private Payment[] payment = new Payment[5];
 
 }

@@ -62,12 +62,11 @@ public class Payment {
     public Date getPaymentDate() {
         return paymentDate;
     }
-    public int setInstanciaDelPago(){  //TOdo uni dos metodos, make it return both vaules
+    public void setInstanciaDelPago(){  //TOdo uni dos metodos, make it return both vaules
         instanciaDelPago = nextInstanciaDelPago;
         nextInstanciaDelPago++;
         transaccionID = nextTransactionID;
         nextTransactionID++;
-        return instanciaDelPago;
     }
     public int getInstanciaDelPago(){
         return instanciaDelPago;

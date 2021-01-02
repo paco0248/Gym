@@ -12,6 +12,7 @@ public class Member {
         expireDate.add(Calendar.MONTH, 1);
         for(int i =0; i < 20; i++) {
             memberPaymentHistory[i] = new Payment(5, 5,  "defaulty name", 0);
+            memberPaymentHistory[i].setInstanciaDelPago();
         }
     }
     public void setFullName(String fn, String ln1, String ln2){
@@ -56,6 +57,7 @@ public class Member {
         balance = amount - dueAmount;
         memberPaymentHistory[pOCC].setAmount(amount);
         memberPaymentHistory[pOCC].setInstanciaDelPago();
+        lastPayment = memberPaymentHistory[pOCC].paymentDate;
         expireDate.add(Calendar.MONTH, 1);
         //todo return balance after payment, wont be a void method then?
         if (balance >= 0){
@@ -67,12 +69,19 @@ public class Member {
         pOCC++;
         transaccionID++;
     }
-    public Payment getMemberPayment(){ //todo if no previous payment figure out how to relay message as opposed of getting null object
-        return memberPaymentHistory[pOCC-1];
+
+   public void setMemberPaymentToNull(int i){
+        memberPaymentHistory[i] = null;
+   }
+   public void setMemberPaymentHistory(Payment[] paymentHistoryParameter){
+       memberPaymentHistory = paymentHistoryParameter;
+   }
+    public Payment getMemberPayment(int i){ //todo if no previous payment figure out how to relay message as opposed of getting null object
+        return memberPaymentHistory[i];
     }
 
 
-    public Payment[] getMemberPaymentHistory(int index){
+    public Payment[] getMemberPaymentHistory(){
         return memberPaymentHistory;            //TODO borrar uno de los 2 metodos
     }
 
@@ -143,7 +152,7 @@ public class Member {
     private static int transaccionID = 1;
     private int nextTransaccionID = 1;
     private Date lastPayment;
-    private int pOCC  = 0; //todo pOCC = paymentObjectCreationCounter
+    private int pOCC  = 1; //todo pOCC = paymentObjectCreationCounter
     int balance = 0;
 
 
