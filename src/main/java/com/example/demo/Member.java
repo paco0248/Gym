@@ -1,6 +1,5 @@
 package com.example.demo;
 import com.fasterxml.jackson.core.JsonToken;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -8,13 +7,17 @@ public class Member {
 
     public Member(){
         joiningDATE = new Date();
+        s = joiningDATE.toString();
         expireDate = new GregorianCalendar();
         expireDate.add(Calendar.MONTH, 1);
-        for(int i =0; i < 20; i++) {
-            memberPaymentHistory[i] = new Payment(5, 5,  "defaulty name", 0);
+        int z = 1;
+        for(int i =0; i < z; i++) {
+            memberPaymentHistory[i] = new Payment(0, 1,  "defaulty name", 0);
             memberPaymentHistory[i].setInstanciaDelPago();
         }
     }
+
+
     public void setFullName(String fn, String ln1, String ln2){
         firstName = fn;
         lastName1 = ln1;
@@ -35,9 +38,11 @@ public class Member {
         GymId = nextId; // set id to next available id
         nextId++;
     }
+
     public int getGymId(){
         return GymId;
     }
+
     public void setJoiningDate(int year, int month, int day) {
         joiningDate = new GregorianCalendar (year, month-1, day);
         joiningDate.set(year, month-1, day);
@@ -120,12 +125,15 @@ public class Member {
     public static int getTransaccionID(){
         return transaccionID;
     }
+
     public int getBalance() {
         return balance;
     }
+
     public GregorianCalendar getDob(){
         return dob;
     }
+
     public void setDob(int day, int month, int year){
         dob.set( day, month, year);
         System.out.println("Update Successful");
@@ -148,12 +156,13 @@ public class Member {
     private Date joiningDATE;//Joining date
 
     private Payment paymentHistory; //solo esta en uno de los constructor
-    Payment[] memberPaymentHistory = new Payment[20]; //hmmm
+    Payment[] memberPaymentHistory = new Payment[1]; //hmmm
     private static int transaccionID = 1;
     private int nextTransaccionID = 1;
     private Date lastPayment;
     private int pOCC  = 1; //todo pOCC = paymentObjectCreationCounter
     int balance = 0;
+    String s;
 
 
 

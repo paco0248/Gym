@@ -20,7 +20,7 @@ public class Payment {
     int instanciaDelPago = 0;
     private int nextInstanciaDelPago = 1;
     int balance = 0;
-    //Payment[] a = new Payment[nextTransaccionID + 1];
+
     String[] paymentInfo = new String[4];
     Date paymentDate;
     GregorianCalendar calendar1 = new GregorianCalendar();

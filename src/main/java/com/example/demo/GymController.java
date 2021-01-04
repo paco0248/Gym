@@ -4,30 +4,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class  GymController {
+
     public GymController(){    //TODO void methods pueden convertirse a VOID, despues hacer un get method para corroborrar accion
-         members = new Member[10];
-        {
-            for (int i = 0; i < 10; i++) {
-                members[i] = new Member();
-                members[i].setFullName("fuckfuck");
-                members[i].setGymId();
-            }
+         members = new Member[z+1];
+
+    }
+
+    @GetMapping("/createMember")    // TODO metodo funciona cuando se crean objetos?
+    public Member greeting(@RequestParam(value = "memberName") String name) {
+        tempo = new Member[members.length+1];
+        for(int i = 0; i < tempo.length-1; i++){
+            tempo[i] = members[i];
         }
+        members = new Member[tempo.length];
+        for (int i = 0; i < tempo.length-1; i++){
+            members[i] = tempo[i];
+        }
+        members[z] = new Member();
+        members[z].setFullName(name);
+        members[z].setGymId();
+        z++;
+        System.out.println(members[z-1].getJoiningDate().toString());
+
+        return members[z-1];
     }
-    @GetMapping("/createMember")    // TODO metodo funciona cuando se crean objetos
-    public Member[] greeting(@RequestParam(value = "firstName") String firstName,
-                             @RequestParam(value = "lastName1") String lastName,
-                             @RequestParam(value = "lastName2") String lastName2,
-                             @RequestParam(value = "day") int day,
-                             @RequestParam(value = "month") int month,
-                             @RequestParam(value = "year") int year,
-                             @RequestParam(value = "index") int i) {
-        members[i] = new Member();
-        members[i].setFullName(firstName,lastName,lastName2);
-        members[i].setGymId(); //TODO BOD Breaks Methods? and convert to void.
-        return members;
-    }
-    @GetMapping("/modifyMember")
+    @GetMapping("/modifyMember") //todo change method to look up member by ID or name
     public Member greetingA(@RequestParam(value = "firstName") String firstName,
                              @RequestParam(value = "lastName1") String lastName,
                              @RequestParam(value = "lastName2") String lastName2,
@@ -41,12 +42,17 @@ public class  GymController {
         return  members[i];
     }
     @GetMapping("/getMember")
-    public Member greetingB(@RequestParam(value = "index") int i) {
+    public Member greetingB(@RequestParam(value = "index") int i) {   //todo change method to look up member by ID or name
         System.out.println("getMember method invoked(read)");
         return members[i];
     }
+    @GetMapping("/getAllMembers")
+    public Member[] greetingI(@RequestParam(value = "index") int i) {
+        System.out.println("getAllMembers method invoked(read)");
+        return members;
+    }
     @GetMapping("/deleteMember")
-    public Member[] greetingC(@RequestParam(value = "index") int x) {
+    public void greetingC(@RequestParam(value = "index") int x) {
         System.out.println("deleteMember method invoked(delete)");
         members[x] = null;  //TODO FIX
        Member[] temp = new Member[members.length-1];
@@ -60,7 +66,6 @@ public class  GymController {
         }
         members = new Member[temp.length];
         members = temp;
-        return members;
     }
     @GetMapping("/makePayment")
     public Payment greetingD(@RequestParam(value = "name", defaultValue = "World") int index,
@@ -74,7 +79,7 @@ public class  GymController {
     @GetMapping("/getPayment")
     public Payment greetingE(@RequestParam(value = "name", defaultValue = "World") int index) {
         System.out.println("getPayment");
-        members[index].getMemberPayment(0);  // TODO porqur cero
+        members[index].getMemberPayment(0);  // TODO porque cero
         return members[index].getMemberPayment(0);
     }
     @GetMapping("/modifyPayment")
@@ -105,11 +110,16 @@ public class  GymController {
         members[index].setMemberPaymentHistory(temp);
     return members[index].memberPaymentHistory;
     }
+    @GetMapping("/registerAttendance")
+    public Payment[] greetingL(@RequestParam(value = "whatMember", defaultValue = "World") int index,
+                               @RequestParam(value = "whatPayment", defaultValue = "World") int secIndex){
 
-
+    return payment;
+    }
 
 
     private Member[] members;
+    private Member[] tempo;
     private Payment[] payment = new Payment[5];
-
+    private int z= 0;  //todo understand array shit breaking
 }
