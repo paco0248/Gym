@@ -20,6 +20,7 @@ public class  GymController {
         for (int i = 0; i < tempo.length-1; i++){
             members[i] = tempo[i];
         }
+
         members[z] = new Member();
         members[z].setFullName(name);
         members[z].setGymId();
@@ -77,11 +78,18 @@ public class  GymController {
         }
 
     @GetMapping("/getPayment")
-    public Payment greetingE(@RequestParam(value = "name", defaultValue = "World") int index) {
+    public Payment greetingE(@RequestParam(value = "name", defaultValue = "World") int index,
+                             @RequestParam(value = "paymentNumber", defaultValue = "World") int secIndex) {
         System.out.println("getPayment");
-        members[index].getMemberPayment(0);  // TODO porque cero
-        return members[index].getMemberPayment(0);
+        members[index].getMemberPayment(secIndex);  // TODO porque cero
+        return members[index].getMemberPayment(secIndex);
     }
+    @GetMapping("/getAllPayments")
+    public Payment[] getAllPayments(@RequestParam(value = "name", defaultValue = "World") int index) {
+        System.out.println("getPayment");
+        return members[index].getMemberPaymentHistory();
+    }
+
     @GetMapping("/modifyPayment")
     public Payment greetingF(@RequestParam(value = "name", defaultValue = "World") int index,
                              @RequestParam(value = "wichPaymentToModify", defaultValue = "World") int secondaryIndex,

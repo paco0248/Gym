@@ -10,13 +10,8 @@ public class Member {
         s = joiningDATE.toString();
         expireDate = new GregorianCalendar();
         expireDate.add(Calendar.MONTH, 1);
-        int z = 1;
-        for(int i =0; i < z; i++) {
-            memberPaymentHistory[i] = new Payment(0, 1,  "defaulty name", 0);
-            memberPaymentHistory[i].setInstanciaDelPago();
-        }
+        memberPaymentHistory = new Payment[z+1];
     }
-
 
     public void setFullName(String fn, String ln1, String ln2){
         firstName = fn;
@@ -58,11 +53,20 @@ public class Member {
     }
 
     public void pay(int amount){
+        Payment[] temp = new Payment[memberPaymentHistory.length+1];
+        for(int i = 0; i< temp.length-1; i++){
+            temp[i] = memberPaymentHistory[i];
+        }
+        memberPaymentHistory = new Payment[temp.length];
         int dueAmount = 500;
+        for(int i = 0; i<temp.length; i++){
+         memberPaymentHistory[i] = temp[i];
+        }
         balance = amount - dueAmount;
-        memberPaymentHistory[pOCC].setAmount(amount);
-        memberPaymentHistory[pOCC].setInstanciaDelPago();
-        lastPayment = memberPaymentHistory[pOCC].paymentDate;
+        memberPaymentHistory[z] = new Payment(amount);
+
+        memberPaymentHistory[z].setInstanciaDelPago();
+        lastPayment = memberPaymentHistory[z].paymentDate;
         expireDate.add(Calendar.MONTH, 1);
         //todo return balance after payment, wont be a void method then?
         if (balance >= 0){
@@ -71,16 +75,16 @@ public class Member {
         else {
             memberStatus = "There is an outstanding balance.";
         }
-        pOCC++;
+        z++;
         transaccionID++;
     }
-
-   public void setMemberPaymentToNull(int i){
+    public void setMemberPaymentToNull(int i){
         memberPaymentHistory[i] = null;
    }
-   public void setMemberPaymentHistory(Payment[] paymentHistoryParameter){
+
+    public void setMemberPaymentHistory(Payment[] paymentHistoryParameter){
        memberPaymentHistory = paymentHistoryParameter;
-   }
+    }
     public Payment getMemberPayment(int i){ //todo if no previous payment figure out how to relay message as opposed of getting null object
         return memberPaymentHistory[i];
     }
@@ -156,7 +160,8 @@ public class Member {
     private Date joiningDATE;//Joining date
 
     private Payment paymentHistory; //solo esta en uno de los constructor
-    Payment[] memberPaymentHistory = new Payment[1]; //hmmm
+    Payment[] memberPaymentHistory;//hmmm
+    int z = 0;
     private static int transaccionID = 1;
     private int nextTransaccionID = 1;
     private Date lastPayment;

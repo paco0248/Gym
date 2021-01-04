@@ -2,24 +2,24 @@ package com.example.demo;
 import java.util.Date;
 import java.util.GregorianCalendar;
 public class Payment {
-    public Payment(int anAmount, int aTransaccionId, String n, int b){
+    public Payment(int anAmount){
     amount = anAmount;
-    transaccionID = aTransaccionId;
+    transaccionID = 0;
     paymentDate = new Date();
-    memberName = n;
-    balance = b;
+    memberName = "deault";
+    balance = 0;
     }
     private String memberName;
     int amount;
     int PaidAmount;
     int dueAmount = 0;
     Date lastPayment;
-    int transaccionID = 0;
+    private int transaccionID;
     private static int nextTransactionID = 1;
-    int nextTransaccionID = 1;
-    int instanciaDelPago = 0;
+    private int nextTransaccionID = 1;
+    private int instanciaDelPago = 0;
     private int nextInstanciaDelPago = 1;
-    int balance = 0;
+    private int balance;
 
     String[] paymentInfo = new String[4];
     Date paymentDate;
