@@ -14,7 +14,7 @@ public class GymProject23Dic20Application {
 
         GymController bFit = new GymController();
 
-        System.out.println("shit stain");
+        System.out.println("shit");
 
 
 
