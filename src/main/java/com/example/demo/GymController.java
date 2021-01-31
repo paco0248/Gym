@@ -44,7 +44,7 @@ public class  GymController {
     }
     @GetMapping("/getMember")
     public Member greetingB(@RequestParam(value = "index") int i) {   //todo change method to look up member by ID or name
-        System.out.println("getMember method invoked(read)");
+
         return members[i];
     }
     @GetMapping("/getAllMembers")
@@ -55,7 +55,7 @@ public class  GymController {
     @GetMapping("/deleteMember")
     public void greetingC(@RequestParam(value = "index") int x) {
         System.out.println("deleteMember method invoked(delete)");
-        members[x] = null;  //TODO FIX
+        members[x] = null;  //TODO FIXh
        Member[] temp = new Member[members.length-1];
        int z = 0;
        for (int i = 0; i < members.length; i++){
@@ -81,7 +81,7 @@ public class  GymController {
     public Payment greetingE(@RequestParam(value = "name", defaultValue = "World") int index,
                              @RequestParam(value = "paymentNumber", defaultValue = "World") int secIndex) {
         System.out.println("getPayment");
-        members[index].getMemberPayment(secIndex);  // TODO porque cero
+        members[index].getMemberPayment(secIndex);
         return members[index].getMemberPayment(secIndex);
     }
     @GetMapping("/getAllPayments")

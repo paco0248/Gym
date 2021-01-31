@@ -64,7 +64,7 @@ public class Payment {
     }
     public void setInstanciaDelPago(){  //TOdo uni dos metodos, make it return both vaules
         instanciaDelPago = nextInstanciaDelPago;
-        nextInstanciaDelPago++;
+        nextInstanciaDelPago = nextInstanciaDelPago++;
         transaccionID = nextTransactionID;
         nextTransactionID++;
     }

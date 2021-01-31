@@ -16,3 +16,18 @@ get attendance
 create attendance
 modify attendance
 delete attendance
+
+What does the pay method do?
+Creates a payment object which obj is to save a payment made by member
+Takes amount as parameter, sets expire date one month after payment, make it return  balance
+What does the getPayment method do?
+Returns the last payment object made by member, verifying that pay method works and the variable values are correct.
+What does the getPaymenthistory method do?
+Returns all payments (objects) made by member
+
+Members have attendance this is recorded via an attendance log. Every attendance event is registered by creating an attendance object.
+The attendance class grants or denies access to members by checking whether their membership is up to date;
+Something that runs everyday to add monthly charge every month if membership is expired, and being able to deny access if membership is due.
+
+Attendance works more like a logbook, In other to pile more work onto it as opposed to clutter memberclass more
+
