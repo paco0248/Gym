@@ -2,13 +2,35 @@ package com.example.demo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+//---------------------------------------------------------------
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.List;
+//-------------------------------------------------------
+
 @RestController
+@RequestMapping("/gymApp")
 public class  GymController {
 
-    public GymController(){    //TODO void methods pueden convertirse a VOID, despues hacer un get method para corroborrar accion
-         members = new Member[z+1];
+    @Resource
+    MemberServiceImpl memberService;
+
+    @GetMapping(value = "/memberList")
+    public List<Member> getMembers() {
+        return memberService.findAll();
 
     }
+
+
 
     @GetMapping("/createMember")    // TODO metodo funciona cuando se crean objetos?
     public Member greeting(@RequestParam(value = "memberName") String name) {
@@ -23,7 +45,7 @@ public class  GymController {
 
         members[z] = new Member();
         members[z].setFullName(name);
-        members[z].setGymId();
+
         z++;
         System.out.println(members[z-1].getJoiningDate().toString());
 
@@ -38,8 +60,8 @@ public class  GymController {
                              @RequestParam(value = "year") int year,
                               @RequestParam(value = "index") int i) {
         members[i].setFullName(firstName, lastName, lastName2);
-        members[i].setDob(day, month, year);
-        members[i].setGymId();
+        //members[i].setDob(day, month, year);
+
         return  members[i];
     }
     @GetMapping("/getMember")
@@ -68,22 +90,21 @@ public class  GymController {
         members = new Member[temp.length];
         members = temp;
     }
-    @GetMapping("/makePayment")
+    /*@GetMapping("/makePayment")
     public Payment greetingD(@RequestParam(value = "name", defaultValue = "World") int index,
                              @RequestParam(value = "amount", defaultValue = "World") int amount) {
             System.out.println("payMethod");
             members[index].pay(amount);
-        members[index].getMemberPayment(0).setMemberName(members[index].getFullName());
-        return members[index].getMemberPayment(0);
-        }
+        //members[index].getMemberPayment(0).setMemberName(members[index].getFullName());
+        //return members[index].getMemberPayment(0);
+        } */
 
-    @GetMapping("/getPayment")
+    /*@GetMapping("/getPayment")
     public Payment greetingE(@RequestParam(value = "name", defaultValue = "World") int index,
                              @RequestParam(value = "paymentNumber", defaultValue = "World") int secIndex) {
         System.out.println("getPayment");
-        members[index].getMemberPayment(secIndex);  // TODO porque cero
-        return members[index].getMemberPayment(secIndex);
-    }
+        //members[index].getMemberPayment(secIndex);  // TODO porque cero
+        r//eturn members[index].getMemberPayment(secIndex);
     @GetMapping("/getAllPayments")
     public Payment[] getAllPayments(@RequestParam(value = "name", defaultValue = "World") int index) {
         System.out.println("getPayment");
@@ -125,6 +146,7 @@ public class  GymController {
     return payment;
     }
 
+    }*/
 
     private Member[] members;
     private Member[] tempo;

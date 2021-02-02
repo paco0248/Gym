@@ -1,5 +1,4 @@
 package com.example.demo;
-import com.fasterxml.jackson.core.JsonToken;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -12,6 +11,28 @@ public class Member {
         expireDate.add(Calendar.MONTH, 1);
         memberPaymentHistory = new Payment[z+1];
     }
+
+    public String getMemberName(){
+        return memberName;
+    }
+    public void setMemberName (String memberName){
+        this.memberName = memberName;
+    }
+
+    public String getMemberPhoneNumber(){
+        return memberPhoneNumber;
+    }
+    public void setMemberPhoneNumber (String memberPhoneNumber){
+        this.memberPhoneNumber = memberPhoneNumber;
+    }
+    public String getMemberDateOfBirth(){
+        return memberDateOfBirth;
+    }
+    public void setMemberDateOfBirth (String memberDateOfBirth){
+        this.memberDateOfBirth = memberDateOfBirth;
+    }
+
+
 
     public void setFullName(String fn, String ln1, String ln2){
         firstName = fn;
@@ -26,16 +47,18 @@ public class Member {
     public String getFullName(){
         return fullName;
     }
-    /*public ArrayList viewMember(){
-        return
-    }*/
-    public void setGymId() {
-        GymId = nextId; // set id to next available id
-        nextId++;
+
+    public String getMemberId(){
+        return memberId;
     }
 
-    public int getGymId(){
-        return GymId;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+        /*
+        memberId = nextId; // set id to next available id
+        nextId++;
+        //todo String parse to int e viceversa
+    */
     }
 
     public void setJoiningDate(int year, int month, int day) {
@@ -85,28 +108,8 @@ public class Member {
     public void setMemberPaymentHistory(Payment[] paymentHistoryParameter){
        memberPaymentHistory = paymentHistoryParameter;
     }
-    public Payment getMemberPayment(int i){ //todo if no previous payment figure out how to relay message as opposed of getting null object
-        return memberPaymentHistory[i];
-    }
 
-
-    public Payment[] getMemberPaymentHistory(){
-        return memberPaymentHistory;            //TODO borrar uno de los 2 metodos
-    }
-
- /*   public Payment getMemberPaymentHistory(){ //todo borrar
-        for(int i =0; i<4; i++) {
-            System.out.println("payment made " + memberPaymentHistory[i].paymentDate +
-                    " Transaction ID:  " + pOCC +" instancia: "
-                    + memberPaymentHistory[i].getTransaccionID());
-        }
-        return paymentHistory;
-    }  */
-    public Date getLastPayment(){
-
-        return lastPayment;
-    }
-    public String checkMemberStatus(){
+    /* public String checkMemberStatus(){
         GregorianCalendar currentDay = new GregorianCalendar();
         if ( currentDay.after(expireDate )){ //test method
             System.out.println("membership Expired");
@@ -118,7 +121,8 @@ public class Member {
             System.out.println("Membership up to Date");
         }
         return memberStatus;
-    }
+    }*/
+
     public String getMemberStatus() {
         if( memberStatus.equals("ok") ){
             System.out.println("Member's balance is up to date");
@@ -134,6 +138,7 @@ public class Member {
         return balance;
     }
 
+    /*
     public GregorianCalendar getDob(){
         return dob;
     }
@@ -141,15 +146,19 @@ public class Member {
     public void setDob(int day, int month, int year){
         dob.set( day, month, year);
         System.out.println("Update Successful");
-    }
+    } */
 
+    private String memberName;
+    private String memberPhoneNumber;
+    private String memberDateOfBirth;
     private String fullName;
     private String firstName;
     private String lastName1;
     private String lastName2;
-    private GregorianCalendar dob = new GregorianCalendar(1970, 0, 1);
+    //
+    // private GregorianCalendar dob = new GregorianCalendar(1970, 0, 1);
 
-    private int GymId;
+    private String memberId;
     private static int nextId = 0;
 
     private String memberStatus = "please verify...";
@@ -168,6 +177,10 @@ public class Member {
     private int pOCC  = 1; //todo pOCC = paymentObjectCreationCounter
     int balance = 0;
     String s;
+
+    // todo add phone number, email, address
+    //  considering that sql table needs to be modified
+
 
 
 
