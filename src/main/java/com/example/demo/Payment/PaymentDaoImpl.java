@@ -40,7 +40,7 @@ public class PaymentDaoImpl {
 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
-                .addValue("paymentId",pay.getPaymentId())
+                .addValue("paymentId", pay.getPaymentId())
                 .addValue("paymentDate", pay.getPaymentDate())
                 .addValue("amount", pay.getAmount())
                 .addValue("memberId", pay.getMemberId());

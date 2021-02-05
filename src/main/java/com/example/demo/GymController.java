@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/gymApp")
 public class  GymController {
 
-    @Resource
+    /*@Resource
     MemberServiceImpl memberService;
 
     @GetMapping(value = "/memberList")
@@ -37,13 +37,13 @@ public class  GymController {
     @PutMapping(value = "/updateMember") //todo change method to look up member by ID or name
     public void UpdateMember(@RequestBody Member mem) {
         memberService.updateMember(mem);
-
     }
-
     @DeleteMapping(value = "/deleteMember")
     public void deleteMember(@RequestBody Member mem) {
         memberService.deleteMember(mem);
-    }
+    }*/
+
+
 
     @Resource
     PaymentServiceImpl paymentService;
@@ -58,7 +58,7 @@ public class  GymController {
         paymentService.insertPayment(pay);
     }
 
-    @PutMapping(value = "/updatePayment") //todo change method to look up member by ID or name
+    @PutMapping(value = "/updatePayment")
     public void UpdatePayment(@RequestBody Payment pay) {
         paymentService.updatePayment(pay);
 
