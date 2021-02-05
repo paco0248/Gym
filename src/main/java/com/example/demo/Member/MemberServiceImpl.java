@@ -1,9 +1,11 @@
-package com.example.demo;
+package com.example.demo.Member;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.example.demo.Member.Member;
+import com.example.demo.Member.MemberDaoImpl;
 import org.springframework.stereotype.Component;
 
 @Component

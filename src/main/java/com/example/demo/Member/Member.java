@@ -1,15 +1,12 @@
-package com.example.demo;
+package com.example.demo.Member;
+import com.example.demo.Payment.Payment;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 public class Member {
 
     public Member(){
-        joiningDATE = new Date();
-        s = joiningDATE.toString();
-        expireDate = new GregorianCalendar();
-        expireDate.add(Calendar.MONTH, 1);
-        memberPaymentHistory = new Payment[z+1];
     }
 
     public String getMemberName(){
@@ -18,7 +15,6 @@ public class Member {
     public void setMemberName (String memberName){
         this.memberName = memberName;
     }
-
     public String getMemberPhoneNumber(){
         return memberPhoneNumber;
     }
@@ -30,22 +26,6 @@ public class Member {
     }
     public void setMemberDateOfBirth (String memberDateOfBirth){
         this.memberDateOfBirth = memberDateOfBirth;
-    }
-
-
-
-    public void setFullName(String fn, String ln1, String ln2){
-        firstName = fn;
-        lastName1 = ln1;
-        lastName2 = ln2;
-        fullName =  fn + " " + ln1 + " " + ln2;
-    }
-    public void setFullName(String memberName){
-        fullName = memberName;
-    }
-
-    public String getFullName(){
-        return fullName;
     }
 
     public String getMemberId(){
@@ -75,7 +55,7 @@ public class Member {
         return expireDate;
     }
 
-    public void pay(int amount){
+   /* public void pay(int amount){
         Payment[] temp = new Payment[memberPaymentHistory.length+1];
         for(int i = 0; i< temp.length-1; i++){
             temp[i] = memberPaymentHistory[i];
@@ -100,14 +80,7 @@ public class Member {
         }
         z++;
         transaccionID++;
-    }
-    public void setMemberPaymentToNull(int i){
-        memberPaymentHistory[i] = null;
-   }
-
-    public void setMemberPaymentHistory(Payment[] paymentHistoryParameter){
-       memberPaymentHistory = paymentHistoryParameter;
-    }
+    } */
 
     /* public String checkMemberStatus(){
         GregorianCalendar currentDay = new GregorianCalendar();
@@ -123,7 +96,7 @@ public class Member {
         return memberStatus;
     }*/
 
-    public String getMemberStatus() {
+    /*public String getMemberStatus() {
         if( memberStatus.equals("ok") ){
             System.out.println("Member's balance is up to date");
         }
@@ -152,9 +125,7 @@ public class Member {
     private String memberPhoneNumber;
     private String memberDateOfBirth;
     private String fullName;
-    private String firstName;
-    private String lastName1;
-    private String lastName2;
+
     //
     // private GregorianCalendar dob = new GregorianCalendar(1970, 0, 1);
 
@@ -175,8 +146,8 @@ public class Member {
     private int nextTransaccionID = 1;
     private Date lastPayment;
     private int pOCC  = 1; //todo pOCC = paymentObjectCreationCounter
-    int balance = 0;
-    String s;
+    //int balance = 0;
+
 
     // todo add phone number, email, address
     //  considering that sql table needs to be modified

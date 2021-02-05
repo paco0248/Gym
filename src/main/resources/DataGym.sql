@@ -1,1 +1,0 @@
-insert into member(memberId, memberName, memberPhoneNumber, memberDateOfBirth) values('1','Jack','3921112222','15, enero, 1999');

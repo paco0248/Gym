@@ -1,8 +1,10 @@
-package com.example.demo;
+package com.example.demo.Member;
 
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.example.demo.Member.Member;
 import org.springframework.jdbc.core.RowMapper;
 
 public class MemberRowMapper implements RowMapper {
@@ -12,9 +14,9 @@ public class MemberRowMapper implements RowMapper {
         Member mem = new Member();
 
         mem.setMemberId(rs.getString("memberId"));
-        mem.setFullName(rs.getString("memberName"));
-        mem.setFullName(rs.getString("memberPhoneNumber"));
-        mem.setFullName(rs.getString("memberDateOfBirth"));
+        mem.setMemberName(rs.getString("memberName"));
+        mem.setMemberPhoneNumber(rs.getString("memberPhoneNumber"));
+        mem.setMemberDateOfBirth(rs.getString("memberDateOfBirth"));
         return mem;
     }
 }
