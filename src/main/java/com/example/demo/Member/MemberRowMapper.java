@@ -17,7 +17,15 @@ public class MemberRowMapper implements RowMapper {
         mem.setMemberName(rs.getString("memberName"));
         mem.setMemberPhoneNumber(rs.getString("memberPhoneNumber"));
         mem.setMemberDateOfBirth(rs.getString("memberDateOfBirth"));
+        mem.setJoiningDate(rs.getString("memberJoiningDate"));
+        mem.setExpireDate(rs.getString("memberExpireDate"));
+        //mem.extendExpireDate(rs.getString("memberExpireDate"));
+        mem.setId(rs.getInt("id"));
+
+
         return mem;
     }
 }
+
+
 //todo member id automated?; converted to string for convinience

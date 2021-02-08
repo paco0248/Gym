@@ -1,158 +1,118 @@
 package com.example.demo.Member;
-import com.example.demo.Payment.Payment;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
+
 public class Member {
 
     public Member(){
+
     }
 
     public String getMemberName(){
         return memberName;
     }
+
     public void setMemberName (String memberName){
         this.memberName = memberName;
     }
+
     public String getMemberPhoneNumber(){
         return memberPhoneNumber;
     }
+
     public void setMemberPhoneNumber (String memberPhoneNumber){
         this.memberPhoneNumber = memberPhoneNumber;
     }
+
     public String getMemberDateOfBirth(){
         return memberDateOfBirth;
     }
+
     public void setMemberDateOfBirth (String memberDateOfBirth){
         this.memberDateOfBirth = memberDateOfBirth;
     }
 
+    public String getMemberId(String memberId){
+        return memberId;
+    }
     public String getMemberId(){
         return memberId;
     }
-
     public void setMemberId(String memberId) {
         this.memberId = memberId;
-        /*
-        memberId = nextId; // set id to next available id
-        nextId++;
-        //todo String parse to int e viceversa
-    */
+        //UUID.randomUUID().toString();
+   //todo automate gym id
     }
 
-    public void setJoiningDate(int year, int month, int day) {
-        joiningDate = new GregorianCalendar (year, month-1, day);
-        joiningDate.set(year, month-1, day);
-        joiningDATE = joiningDate.getTime();
-        expireDate = new GregorianCalendar(year, month, day);
-        expireDate.add(Calendar.MONTH, 1);
-    }
-    public Date getJoiningDate(){
-        return joiningDATE;
-    }
-    public GregorianCalendar getExpireDate(){
-        return expireDate;
+    public void setMemberId(List<Member> memberList) {
+        this.memberId = memberId;
+        //UUID.randomUUID().toString();
+        //todo automate gym id
     }
 
-   /* public void pay(int amount){
-        Payment[] temp = new Payment[memberPaymentHistory.length+1];
-        for(int i = 0; i< temp.length-1; i++){
-            temp[i] = memberPaymentHistory[i];
-        }
-        memberPaymentHistory = new Payment[temp.length];
-        int dueAmount = 500;
-        for(int i = 0; i<temp.length; i++){
-         memberPaymentHistory[i] = temp[i];
-        }
-        balance = amount - dueAmount;
-        memberPaymentHistory[z] = new Payment(amount);
-
-        memberPaymentHistory[z].setInstanciaDelPago();
-        lastPayment = memberPaymentHistory[z].paymentDate;
-        expireDate.add(Calendar.MONTH, 1);
-        //todo return balance after payment, wont be a void method then?
-        if (balance >= 0){
-            memberStatus = "Ok";
-        }
-        else {
-            memberStatus = "There is an outstanding balance.";
-        }
-        z++;
-        transaccionID++;
-    } */
-
-    /* public String checkMemberStatus(){
-        GregorianCalendar currentDay = new GregorianCalendar();
-        if ( currentDay.after(expireDate )){ //test method
-            System.out.println("membership Expired");
-        } //and deny access
-        if (currentDay.equals(expireDate)){
-            System.out.println("Last Day to renew membership");
-        }
-        if(currentDay.before(expireDate)){
-            System.out.println("Membership up to Date");
-        }
-        return memberStatus;
-    }*/
-
-    /*public String getMemberStatus() {
-        if( memberStatus.equals("ok") ){
-            System.out.println("Member's balance is up to date");
-        }
-        else System.out.println(" ");
-        return memberStatus;
-    }
-    public static int getTransaccionID(){
-        return transaccionID;
+    public String getMemberJoiningDate(){
+        return memberJoiningDate;
     }
 
-    public int getBalance() {
-        return balance;
+    public void setMemberJoiningDate(String memberJoiningDate){ //Todo metodo obsoleto porque?
+        this.memberJoiningDate = memberJoiningDate;
     }
 
-    /*
-    public GregorianCalendar getDob(){
-        return dob;
+    public String getMemberExpireDate() {
+        return memberExpireDate;
     }
 
-    public void setDob(int day, int month, int year){
-        dob.set( day, month, year);
-        System.out.println("Update Successful");
-    } */
+    public void setExpireDate(String memberExpireDate) {
+        this.memberExpireDate = memberExpireDate;
+    }
+    public void setExpireDate() {
+       // this.memberExpireDate = getJoiningdate1.;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(joiningDate1);
+        // manipulate date
+        cal.add(Calendar.MONTH, 1);
+        // convert calendar to date
+        Date modifiedDate = cal.getTime();
+        memberExpireDate = modifiedDate.toString();
+    }
+
+
+
+
+
+    public void setJoiningDate(String memberJoiningDate) {
+    }
+    public void setJoiningDate(){
+        memberJoiningDate = joiningDate1.toString();
+    }
+    public int getId(){
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     private String memberName;
     private String memberPhoneNumber;
     private String memberDateOfBirth;
-    private String fullName;
-
-    //
-    // private GregorianCalendar dob = new GregorianCalendar(1970, 0, 1);
-
     private String memberId;
-    private static int nextId = 0;
+    private Date joiningDate1 = new Date();
+    private String memberJoiningDate;
+    private String memberExpireDate;
+
+
 
     private String memberStatus = "please verify...";
-
-    private GregorianCalendar joiningDate;
-    private GregorianCalendar expireDate;
-    private GregorianCalendar memberAttendance = new GregorianCalendar();
     private Date joiningDATE;//Joining date
-
-    private Payment paymentHistory; //solo esta en uno de los constructor
-    Payment[] memberPaymentHistory;//hmmm
-    int z = 0;
     private static int transaccionID = 1;
     private int nextTransaccionID = 1;
+
     private Date lastPayment;
-    private int pOCC  = 1; //todo pOCC = paymentObjectCreationCounter
-    //int balance = 0;
+    private int id;
 
 
     // todo add phone number, email, address
     //  considering that sql table needs to be modified
-
-
 
 
 }

@@ -17,8 +17,9 @@ public class PaymentServiceImpl {
         return paymentDao.findAll();
     }
 
-    public void insertPayment(Payment pay) {
+   public void insertPayment(Payment pay) {
         paymentDao.insertPayment(pay);
+        paymentDao.extendMembership(pay); //todo separar a clase correcta
     }
 
     public void updatePayment(Payment pay) {

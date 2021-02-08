@@ -16,6 +16,8 @@ public class PaymentRowMapper implements RowMapper {
         pay.setPaymentDate(rs.getString("paymentDate"));
         pay.setAmount(rs.getString("amount"));
         pay.setMemberId(rs.getString("memberId"));
+        pay.setId(rs.getInt("id"));
+
         return pay;
     }
 }

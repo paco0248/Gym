@@ -16,3 +16,7 @@ get attendance
 create attendance
 modify attendance
 delete attendance
+
+Todo
+convert dates to date objects
+mover update member sql statement frm to ...

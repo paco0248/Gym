@@ -21,8 +21,13 @@ import java.util.List;
 @RequestMapping("/gymApp")
 public class  GymController {
 
-    /*@Resource
-    MemberServiceImpl memberService;
+    @Resource
+    MemberServiceImpl memberService ;
+
+    @GetMapping(value = "/getLastMemberId")
+    public String getLastMemberId(){
+        return memberService.getLastMemberId().getMemberId();
+    }
 
     @GetMapping(value = "/memberList")
     public List<Member> getMembers() {
@@ -34,6 +39,11 @@ public class  GymController {
         memberService.insertMember(mem);
     }
 
+    @PostMapping(value = "/createMemberWoId")
+    public void createMemberWoId(@RequestBody Member mem) {
+        memberService.insertMemberWoId(mem);
+    }
+
     @PutMapping(value = "/updateMember") //todo change method to look up member by ID or name
     public void UpdateMember(@RequestBody Member mem) {
         memberService.updateMember(mem);
@@ -41,7 +51,7 @@ public class  GymController {
     @DeleteMapping(value = "/deleteMember")
     public void deleteMember(@RequestBody Member mem) {
         memberService.deleteMember(mem);
-    }*/
+    }
 
 
 
