@@ -1,13 +1,8 @@
 package com.example.demo;
 
-import com.example.demo.Member.Member;
-import com.example.demo.Member.MemberServiceImpl;
-import com.example.demo.Payment.Payment;
+import com.example.demo.Model.Member;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-
-import java.util.Date;
 
 @SpringBootApplication
 public class GymProject23Dic20Application {
@@ -16,8 +11,12 @@ public class GymProject23Dic20Application {
         SpringApplication.run(GymProject23Dic20Application.class, args);
 
 
+        Member mem = new Member();
 
-        System.out.println("shit" );
+
+
+
+        System.out.println("shit" + mem.getMemberJoiningDate().toString());
 
 
 

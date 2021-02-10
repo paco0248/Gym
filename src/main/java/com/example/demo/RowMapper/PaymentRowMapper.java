@@ -1,8 +1,8 @@
-package com.example.demo.Payment;
+package com.example.demo.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.example.demo.Payment.Payment;
+import com.example.demo.Model.Payment;
 import org.springframework.jdbc.core.RowMapper;
 
 public class PaymentRowMapper implements RowMapper {
@@ -13,10 +13,10 @@ public class PaymentRowMapper implements RowMapper {
 
 
         pay.setPaymentId(rs.getString("paymentId"));
-        pay.setPaymentDate(rs.getString("paymentDate"));
-        pay.setAmount(rs.getString("amount"));
-        pay.setMemberId(rs.getString("memberId"));
-        pay.setId(rs.getInt("id"));
+        pay.setPaymentDate(rs.getDate("paymentDate"));
+        pay.setAmount(rs.getFloat("amount"));
+        //pay.setMemberId(rs.getString("memberId"));
+
 
         return pay;
     }

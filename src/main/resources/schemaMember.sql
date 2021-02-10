@@ -4,21 +4,20 @@ CREATE TABLE member
  memberName varchar(100) NOT NULL,
  memberPhoneNumber varchar(100) DEFAULT NULL,
  memberDateOfBirth varchar(100) DEFAULT NULL,
- memberJoiningDate varchar(100) DEFAULT NULL,
- memberExpireDate varchar(100) DEFAULT NULL,
+ memberJoiningDate DATE NOT NULL DEFAULT CURRENT_DATE,
+ memberExpireDate DATE DEFAULT NULL,
  id SERIAL NOT NULL,
  PRIMARY KEY (id)
 );
 
 CREATE TABLE payment
 (
-  paymentId varchar(11) DEFAULT NULL ,
- paymentDate varchar(100)  DEFAULT NULL,
- paymentDateDate varchar(100) DEFAULT NULL,
- amount varchar(100) DEFAULT NULL,
+  paymentId SERIAL NOT NULL ,
+ paymentDate DATE NOT NULL DEFAULT CURRENT_DATE,
+ amount NUMERIC(5,2) DEFAULT NULL,
  memberId varchar(100) DEFAULT NULL,
- id SERIAL NOT NULL,
- PRIMARY KEY (id)
+
+ PRIMARY KEY (paymentId)
 );
 
 

@@ -1,11 +1,13 @@
-package com.example.demo.Payment;
+package com.example.demo.ServiceImpl;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.example.demo.Member.Member;
-import com.example.demo.Member.MemberDaoImpl;
+import com.example.demo.DaoImpl.MemberDaoImpl;
+import com.example.demo.DaoImpl.PaymentDaoImpl;
+import com.example.demo.Model.Member;
+import com.example.demo.Model.Payment;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,13 +15,17 @@ public class PaymentServiceImpl {
     @Resource
     PaymentDaoImpl paymentDao;
 
+    @Resource
+    MemberDaoImpl memberDao;
+
     public List<Payment> findAll() {
         return paymentDao.findAll();
     }
 
-   public void insertPayment(Payment pay) {
+   public void insertPayment(Payment pay, Member mem) {
         paymentDao.insertPayment(pay);
-        paymentDao.extendMembership(pay); //todo separar a clase correcta
+        mem.extendExpireDate();
+        memberDao.extendMembership(mem);
     }
 
     public void updatePayment(Payment pay) {

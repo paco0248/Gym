@@ -1,12 +1,11 @@
-package com.example.demo.Member;
+package com.example.demo.ServiceImpl;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.example.demo.GymController;
-import com.example.demo.Member.Member;
-import com.example.demo.Member.MemberDaoImpl;
+import com.example.demo.DaoImpl.MemberDaoImpl;
+import com.example.demo.Model.Member;
 import org.springframework.stereotype.Component;
 
 @Component

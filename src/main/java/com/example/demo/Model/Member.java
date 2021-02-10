@@ -1,6 +1,7 @@
-package com.example.demo.Member;
+package com.example.demo.Model;
 
 import java.util.*;
+
 
 public class Member {
 
@@ -50,19 +51,32 @@ public class Member {
         //todo automate gym id
     }
 
-    public String getMemberJoiningDate(){
+    public Date getMemberJoiningDate(){
         return memberJoiningDate;
     }
 
-    public void setMemberJoiningDate(String memberJoiningDate){ //Todo metodo obsoleto porque?
+    public void setMemberJoiningDate(Date memberJoiningDate){ //Todo metodo obsoleto porque?
         this.memberJoiningDate = memberJoiningDate;
     }
 
-    public String getMemberExpireDate() {
+    public Date getMemberExpireDate() {
         return memberExpireDate;
     }
+    public Date getExtendedExpireDate(){
+        return extendedExpireDate;
+    }
+    public void extendExpireDate(){
+        extendedExpireDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(extendedExpireDate);
+        // manipulate date
+        cal.add(Calendar.MONTH, 1);
+        // convert calendar to date
+        Date modifiedDate = cal.getTime();
+        memberExpireDate = modifiedDate;
+    }
 
-    public void setExpireDate(String memberExpireDate) {
+    public void setExpireDate(Date memberExpireDate) {
         this.memberExpireDate = memberExpireDate;
     }
     public void setExpireDate() {
@@ -73,17 +87,18 @@ public class Member {
         cal.add(Calendar.MONTH, 1);
         // convert calendar to date
         Date modifiedDate = cal.getTime();
-        memberExpireDate = modifiedDate.toString();
+        memberExpireDate = modifiedDate;
     }
 
 
 
 
 
-    public void setJoiningDate(String memberJoiningDate) {
+    public void setJoiningDate(Date memberJoiningDate) {
+        this.memberJoiningDate = memberJoiningDate;
     }
     public void setJoiningDate(){
-        memberJoiningDate = joiningDate1.toString();
+        memberJoiningDate = memberJoiningDate;
     }
     public int getId(){
         return id;
@@ -97,8 +112,9 @@ public class Member {
     private String memberDateOfBirth;
     private String memberId;
     private Date joiningDate1 = new Date();
-    private String memberJoiningDate;
-    private String memberExpireDate;
+    private Date memberJoiningDate = new Date();
+    private Date memberExpireDate;
+    private Date extendedExpireDate;
 
 
 

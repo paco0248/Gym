@@ -1,5 +1,6 @@
-package com.example.demo.Member;
+package com.example.demo.RowMapper;
 
+import com.example.demo.Model.Member;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,10 +1,11 @@
 package com.example.demo;
-import com.example.demo.Member.Member;
-import com.example.demo.Member.MemberServiceImpl;
-import com.example.demo.Payment.Payment;
-import com.example.demo.Payment.PaymentServiceImpl;
+import com.example.demo.Model.Member;
+import com.example.demo.ServiceImpl.MemberServiceImpl;
+import com.example.demo.Model.Payment;
+import com.example.demo.ServiceImpl.PaymentServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import org.springframework.web.bind.annotation.RequestMapping;
 //---------------------------------------------------------------
@@ -58,14 +59,16 @@ public class  GymController {
     @Resource
     PaymentServiceImpl paymentService;
 
+
+
     @GetMapping(value = "/paymentList")
     public List<Payment> getPayment() {
         return paymentService.findAll();
     }
 
     @PostMapping(value = "/createPayment")
-    public void createPayment(@RequestBody Payment pay) {
-        paymentService.insertPayment(pay);
+    public void createPayment(@RequestBody Payment pay, Member mem) {
+        paymentService.insertPayment(pay, mem);
     }
 
     @PutMapping(value = "/updatePayment")

@@ -1,4 +1,4 @@
-package com.example.demo.Payment;
+package com.example.demo.DaoImpl;
 
 
 import java.sql.PreparedStatement;
@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.demo.Model.Payment;
+import com.example.demo.RowMapper.PaymentRowMapper;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -32,27 +34,19 @@ public class PaymentDaoImpl {
     }
 
     public void insertPayment(Payment pay) {
-        final String sql = "insert into payment(paymentId, paymentDate, amount, memberId, paymentDateDate) values(:paymentId, :paymentDate, :amount,  :memberId, :paymentDateDate)";
+        final String sql = "insert into payment(paymentDate, amount, memberId)" +
+                " values(:paymentDate, :amount,  :memberId)";
 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("paymentId", pay.getPaymentId())
                 .addValue("paymentDate", pay.getPaymentDate())
-                .addValue("paymentDateDate", pay.getPaymentDateDate().toString())
                 .addValue("amount", pay.getAmount())
                 .addValue("memberId", pay.getMemberId());
         template.update(sql, param, holder);
     }
 
-    public void extendMembership(Payment pay) {
-        final String sql = "update member set memberExpireDate=:memberExpireDate where memberId=:memberId";
 
-        KeyHolder holder = new GeneratedKeyHolder();
-        SqlParameterSource param = new MapSqlParameterSource()
-                .addValue("memberId", pay.getMemberId())
-                .addValue("memberExpireDate", pay.getMemberExpireDate());
-        template.update(sql, param, holder);
-    }
 
 
 
@@ -61,7 +55,8 @@ public class PaymentDaoImpl {
 
 
         public void updatePayment(Payment pay) {
-        final String sql = "update payment set memberId=:memberId, paymentDate=:paymentDate, amount=:amount where paymentId=:paymentId";
+        final String sql = "update payment set memberId=:memberId, paymentDate=:paymentDate," +
+                " amount=:amount where paymentId=:paymentId";
 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
@@ -73,7 +68,8 @@ public class PaymentDaoImpl {
     }
 
     public void executeUpdatePayment (Payment pay) {
-        final String sql =  "update payment set memberId=:memberId, paymentDate=:paymentDate, amount=:amount where paymentId=:paymentId";
+        final String sql =  "update payment set memberId=:memberId, paymentDate=:paymentDate," +
+                " amount=:amount where paymentId=:paymentId";
 
 
         Map<String,Object> map=new HashMap<String,Object>();

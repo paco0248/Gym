@@ -1,13 +1,14 @@
-package com.example.demo.Member;
+package com.example.demo.DaoImpl;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.demo.Payment.Payment;
+import com.example.demo.Model.Member;
+import com.example.demo.RowMapper.MemberRowMapper;
+import com.example.demo.Model.Payment;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -25,7 +26,7 @@ public class MemberDaoImpl {
     }
 
     NamedParameterJdbcTemplate template;
-    NamedParameterJdbcTemplate template2;
+
 
     public List<Member> findAll() {
         return template.query("select * from member", new MemberRowMapper());
@@ -33,7 +34,9 @@ public class MemberDaoImpl {
     }
 
     public Member getLastMemberId() {
-         return (Member) template.queryForObject("select memberId from member order by memberId desc limit 1;",  new MapSqlParameterSource(), new MemberRowMapper2());
+         return (Member) template.queryForObject(
+                 "select memberId from member order by memberId desc limit 1;",
+                 new MapSqlParameterSource(), new MemberRowMapper());
 
     }
 
@@ -47,7 +50,7 @@ public class MemberDaoImpl {
 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
-                .addValue("memberId", mem.getMemberId(getLastMemberId().toString()))
+                .addValue("memberId", mem.getMemberId())
                 .addValue("memberName", mem.getMemberName())
                 .addValue("memberPhoneNumber", mem.getMemberPhoneNumber())
                 .addValue("memberDateOfBirth", mem.getMemberDateOfBirth())
@@ -79,7 +82,8 @@ public class MemberDaoImpl {
 
 
     public void updateMember(Member mem) {
-        final String sql = "update member set memberName=:memberName, memberDateOfBirth=:memberDateOfBirth, memberPhoneNumber=:memberPhoneNumber, memberJoiningDate=:memberJoiningDate, memberExpireDate=:memberExpireDate  where memberId=:memberId";
+        final String sql = "update member set memberName=:memberName, memberDateOfBirth=:memberDateOfBirth, memberPhoneNumber=:memberPhoneNumber, " +
+                "memberJoiningDate=:memberJoiningDate, memberExpireDate=:memberExpireDate  where memberId=:memberId";
 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
@@ -93,7 +97,10 @@ public class MemberDaoImpl {
     }
 
     public void executeUpdateMember (Member mem) {
-        final String sql =  "update member set memberName=:memberName, memberDateOfBirth=:memberDateOfBirth, memberPhoneNumber=:memberPhoneNumber, memberJoiningDate=:memberJoiningDate where memberId=:memberId";
+        final String sql =  "update member set memberName=:memberName," +
+                " memberDateOfBirth=:memberDateOfBirth," +
+                " memberPhoneNumber=:memberPhoneNumber," +
+                " memberJoiningDate=:memberJoiningDate where memberId=:memberId";
 
 
         Map<String,Object> map=new HashMap<String,Object>();
@@ -130,6 +137,17 @@ public class MemberDaoImpl {
         });
 
 
+    }
+
+    public void extendMembership(Member mem) {
+        final String sql = "update member set memberExpireDate=:memberExpireDate where memberId=:memberId";
+
+        KeyHolder holder = new GeneratedKeyHolder();
+        SqlParameterSource param = new MapSqlParameterSource()
+
+                .addValue("memberId", mem.getMemberExpireDate())
+                .addValue("memberExpireDate", mem.getMemberExpireDate());
+        template.update(sql, param, holder);
     }
 
 
