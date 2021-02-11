@@ -31,11 +31,16 @@ public class PaymentServiceImpl {
 
    public void insertPayment(Payment pay) {
         paymentDao.insertPayment(pay);
-            mem.extendExpireDate();
+        Member mem  = memberDao.getMemberbyId(pay.getMemberId());
+         /*   mem.extendExpireDate();
             mem.getExtendedExpireDate();
             mem.setExpireDate();
-        memberDao.extendMembership(mem);
-        memberService.updateMemberExpireDate(mem);
+        memberDao.extendMembership(mem);*/
+       mem.extendExpireDate();
+       memberDao.extendMembership(mem);
+       System.out.println(mem);
+
+
 
     }
 

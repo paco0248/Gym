@@ -38,6 +38,16 @@ public class MemberDaoImpl {
                  new MapSqlParameterSource(), new MemberRowMapper());
 
     }
+    public Member getMemberbyId(int memberId) {
+        final String sql = "select * from member  where id::integer=:memberId;";
+
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("memberId", memberId);
+         return (Member) template.queryForObject(
+                 sql,
+                 param, new MemberRowMapper());
+
+    }
 
 
 

@@ -129,6 +129,24 @@ public class Member {
     private Date lastPayment;
     private int id;
 
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memberName='" + memberName + '\'' +
+                ", memberPhoneNumber='" + memberPhoneNumber + '\'' +
+                ", memberDateOfBirth='" + memberDateOfBirth + '\'' +
+                ", memberId='" + memberId + '\'' +
+                ", joiningDate1=" + joiningDate1 +
+                ", memberJoiningDate=" + memberJoiningDate +
+                ", memberExpireDate=" + memberExpireDate +
+                ", extendedExpireDate=" + extendedExpireDate +
+                ", memberStatus='" + memberStatus + '\'' +
+                ", joiningDATE=" + joiningDATE +
+                ", nextTransaccionID=" + nextTransaccionID +
+                ", lastPayment=" + lastPayment +
+                ", id=" + id +
+                '}';
+    }
 
     // todo add phone number, email, address
     //  considering that sql table needs to be modified
