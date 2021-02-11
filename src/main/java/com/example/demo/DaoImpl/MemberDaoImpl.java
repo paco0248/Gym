@@ -6,9 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.demo.Model.Member;
+import com.example.demo.Entity.Member;
 import com.example.demo.RowMapper.MemberRowMapper;
-import com.example.demo.Model.Payment;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -145,9 +144,35 @@ public class MemberDaoImpl {
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
 
-                .addValue("memberId", mem.getMemberExpireDate())
+                .addValue("memberId", mem.getMemberId())
+                //.addValue("memberExpireDate", mem.getExtendedExpireDate())
                 .addValue("memberExpireDate", mem.getMemberExpireDate());
         template.update(sql, param, holder);
+    }
+
+    public void executeExtendMembership (Member mem) {
+        final String sql =  "update member set memberExpireDate=:memberExpireDate where memberId=:memberId";
+
+
+        Map<String,Object> map=new HashMap<String,Object>();
+        //map.put("memberId", mem.getMemberId());
+        //map.put("memberName", mem.getMemberName());
+        //map.put("memberPhoneNumber", mem.getMemberPhoneNumber());
+        //map.put("memberDateOfBirth", mem.getMemberDateOfBirth());
+        //map.put("memberJoiningDate", mem.getMemberJoiningDate());
+        map.put("memberId", mem.getMemberId());
+        //map.put("memberExpireDate", mem.getExtendedExpireDate());
+        map.put("memberExpireDate", mem.getMemberExpireDate());
+
+        template.execute(sql,map,new PreparedStatementCallback<Object>() {
+            @Override
+            public Object doInPreparedStatement(PreparedStatement ps)
+                    throws SQLException, DataAccessException {
+                return ps.executeUpdate();
+            }
+        });
+
+
     }
 
 

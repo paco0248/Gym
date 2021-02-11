@@ -4,7 +4,7 @@ package com.example.demo.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.example.demo.Model.Member;
+import com.example.demo.Entity.Member;
 import org.springframework.jdbc.core.RowMapper;
 
 public class MemberRowMapper implements RowMapper {
@@ -19,7 +19,7 @@ public class MemberRowMapper implements RowMapper {
         mem.setMemberDateOfBirth(rs.getString("memberDateOfBirth"));
         mem.setMemberJoiningDate(rs.getDate("memberJoiningDate"));
         mem.setExpireDate(rs.getDate("memberExpireDate"));
-        //mem.extendExpireDate(rs.getString("memberExpireDate"));
+        mem.setExtendedExpireDate(rs.getDate("memberExpireDate"));
         mem.setId(rs.getInt("id"));
 
 

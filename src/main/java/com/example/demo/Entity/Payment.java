@@ -1,5 +1,4 @@
-package com.example.demo.Model;
-import java.util.Calendar;
+package com.example.demo.Entity;
 import java.util.Date;
 
 public class Payment {
@@ -9,19 +8,21 @@ public class Payment {
   }
 
   private int paymentId;
-  private String returnString;
-  private Date paymentDate = new Date();
-  private float amount;
-  private String memberId;
 
+  private String stringTest;
+
+  private Date paymentDate = new Date();
+
+  private float amount;
+  private int memberId;
   public int getPaymentId() {
     return paymentId;
   }
 
-  public void setPayme ntId(String paymentId) {
+  public void setPaymentId(int paymentId) {
+
     this.paymentId = paymentId;
   }
-
   public Date getPaymentDate() {
     return paymentDate;
   }
@@ -38,13 +39,14 @@ public class Payment {
     this.amount = amount;
   }
 
-  public String getMemberId() {
+  public int getMemberId() {
     return memberId;
   }
 
-  public void setMemberId(String memberId) {
+  public void setMemberId(int memberId) {
     this.memberId = memberId;
   }
+
 
   /*public Date getMemberExpireDate() {
     return memberExpireDate;
@@ -60,4 +62,11 @@ public class Payment {
     Date modifiedDate = cal.getTime();
     memberExpireDate = modifiedDate;
   }*/
+ public String getStringTest() {
+   return stringTest;
+ }
+
+  public void setStringTest(String stringTest) {
+    this.stringTest = stringTest;
+  }
 }

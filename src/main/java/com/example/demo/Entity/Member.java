@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.Entity;
 
 import java.util.*;
 
@@ -73,7 +73,10 @@ public class Member {
         cal.add(Calendar.MONTH, 1);
         // convert calendar to date
         Date modifiedDate = cal.getTime();
-        memberExpireDate = modifiedDate;
+        extendedExpireDate = modifiedDate;
+    }
+    public void setExtendedExpireDate(Date extendedExpireDate){
+        this.extendedExpireDate = extendedExpireDate;
     }
 
     public void setExpireDate(Date memberExpireDate) {

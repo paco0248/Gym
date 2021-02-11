@@ -2,7 +2,7 @@ package com.example.demo.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.example.demo.Model.Payment;
+import com.example.demo.Entity.Payment;
 import org.springframework.jdbc.core.RowMapper;
 
 public class PaymentRowMapper implements RowMapper {
@@ -12,10 +12,11 @@ public class PaymentRowMapper implements RowMapper {
         Payment pay = new Payment();
 
 
-        pay.setPaymentId(rs.getString("paymentId"));
+        pay.setPaymentId(rs.getInt("paymentId"));
         pay.setPaymentDate(rs.getDate("paymentDate"));
         pay.setAmount(rs.getFloat("amount"));
-        //pay.setMemberId(rs.getString("memberId"));
+        pay.setStringTest(rs.getString("stringTest"));
+        pay.setMemberId(rs.getInt("memberId"));
 
 
         return pay;

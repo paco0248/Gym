@@ -15,8 +15,8 @@ CREATE TABLE payment
   paymentId SERIAL NOT NULL ,
  paymentDate DATE NOT NULL DEFAULT CURRENT_DATE,
  amount NUMERIC(5,2) DEFAULT NULL,
- memberId varchar(100) DEFAULT NULL,
-
+ memberId INTEGER DEFAULT NULL,
+ stringTest varchar(100) DEFAULT NULL,
  PRIMARY KEY (paymentId)
 );
 

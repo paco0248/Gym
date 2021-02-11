@@ -1,7 +1,7 @@
 package com.example.demo;
-import com.example.demo.Model.Member;
+import com.example.demo.Entity.Member;
 import com.example.demo.ServiceImpl.MemberServiceImpl;
-import com.example.demo.Model.Payment;
+import com.example.demo.Entity.Payment;
 import com.example.demo.ServiceImpl.PaymentServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +30,7 @@ public class  GymController {
         return memberService.getLastMemberId().getMemberId();
     }
 
+
     @GetMapping(value = "/memberList")
     public List<Member> getMembers() {
         return memberService.findAll();
@@ -53,6 +54,10 @@ public class  GymController {
     public void deleteMember(@RequestBody Member mem) {
         memberService.deleteMember(mem);
     }
+    @PutMapping(value = "/updateMemberExpireDate") //todo change method to look up member by ID or name
+    public void updateMemberExpireDate(@RequestBody Member mem) {
+        memberService.updateMemberExpireDate(mem);
+    }
 
 
 
@@ -66,9 +71,15 @@ public class  GymController {
         return paymentService.findAll();
     }
 
+    @GetMapping(value = "/returnTest")
+    public String returnTest(){
+        return paymentService.returnStringTest();
+    }
+
+
     @PostMapping(value = "/createPayment")
-    public void createPayment(@RequestBody Payment pay, Member mem) {
-        paymentService.insertPayment(pay, mem);
+    public void createPayment(@RequestBody Payment pay) {
+        paymentService.insertPayment(pay);
     }
 
     @PutMapping(value = "/updatePayment")

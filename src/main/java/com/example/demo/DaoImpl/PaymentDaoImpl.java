@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.demo.Model.Payment;
+import com.example.demo.Entity.Member;
+import com.example.demo.Entity.Payment;
+import com.example.demo.RowMapper.MemberRowMapper;
 import com.example.demo.RowMapper.PaymentRowMapper;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.PreparedStatementCallback;
@@ -32,17 +34,25 @@ public class PaymentDaoImpl {
         return template.query("select * from payment", new PaymentRowMapper());
 
     }
+    public String returnStringTest() {
+        return (String) template.queryForObject(
+                "select stringTest from payment order by paymentId desc limit 1;",
+                new MapSqlParameterSource(), new PaymentRowMapper());
+    }
+
+
 
     public void insertPayment(Payment pay) {
-        final String sql = "insert into payment(paymentDate, amount, memberId)" +
-                " values(:paymentDate, :amount,  :memberId)";
+        final String sql = "insert into payment(paymentDate, amount, memberId, stringTest)" +
+                " values(:paymentDate, :amount, :memberId, :stringTest)";
 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("paymentId", pay.getPaymentId())
                 .addValue("paymentDate", pay.getPaymentDate())
                 .addValue("amount", pay.getAmount())
-                .addValue("memberId", pay.getMemberId());
+                .addValue("memberId", pay.getMemberId())
+                .addValue("stringTest", pay.getStringTest());
         template.update(sql, param, holder);
     }
 

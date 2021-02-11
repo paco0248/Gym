@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.example.demo.DaoImpl.MemberDaoImpl;
-import com.example.demo.Model.Member;
+import com.example.demo.Entity.Member;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -41,6 +41,16 @@ public class MemberServiceImpl {
 
     public void executeUpdateMember(Member mem) {
         memberDao.executeUpdateMember(mem);
+
+    }
+
+    public void updateMemberExpireDate(Member mem) {
+        mem.setExpireDate();
+        memberDao.extendMembership(mem);
+    }
+
+    public void executeUpdateMemberExpireDate(Member mem) {
+        memberDao.executeExtendMembership(mem);
 
     }
 
