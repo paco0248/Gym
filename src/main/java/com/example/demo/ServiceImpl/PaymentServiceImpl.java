@@ -30,6 +30,7 @@ public class PaymentServiceImpl {
    public void insertPayment(Payment pay) {
         paymentDao.insertPayment(pay);
         Member mem  = memberDao.getMemberbyId(pay.getMemberId());
+
          /*   mem.extendExpireDate();
             mem.getExtendedExpireDate();
             mem.setExpireDate();

@@ -66,7 +66,7 @@ public class  GymController {
         memberService.updateMemberExpireDate(mem);
     }
 
-
+        ////////////////////////////////////////////////////////////////////
 
     @Resource
     PaymentServiceImpl paymentService;
