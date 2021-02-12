@@ -34,13 +34,16 @@ public class PaymentDaoImpl {
         return template.query("select * from payment", new PaymentRowMapper());
 
     }
-    public String returnStringTest() {
-        return (String) template.queryForObject(
-                "select stringTest from payment order by paymentId desc limit 1;",
-                new MapSqlParameterSource(), new PaymentRowMapper());
+    public Payment returnStringTest3(int paymentId) {
+        final String sql = "select * from payment where paymentId=:paymentId;";
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("paymentId", paymentId);
+
+        return (Payment) template.queryForObject(
+                sql,
+                param, new MemberRowMapper());
+
     }
-
-
 
     public void insertPayment(Payment pay) {
         final String sql = "insert into payment(paymentDate, amount, memberId, stringTest)" +

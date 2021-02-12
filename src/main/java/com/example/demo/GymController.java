@@ -31,6 +31,8 @@ public class  GymController {
     }
 
 
+
+
     @GetMapping(value = "/memberList")
     public List<Member> getMembers() {
         return memberService.findAll();
@@ -71,10 +73,10 @@ public class  GymController {
         return paymentService.findAll();
     }
 
-    @GetMapping(value = "/returnTest")
+   /* @GetMapping(value = "/returnTest")
     public String returnTest(){
-        return paymentService.returnStringTest();
-    }
+        return p();
+    }*/
 
 
     @PostMapping(value = "/createPayment")

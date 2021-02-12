@@ -69,4 +69,8 @@ public class Payment {
   public void setStringTest(String stringTest) {
     this.stringTest = stringTest;
   }
+  @Override
+  public String toString() {
+    return "paymentId= "+paymentId +" " + "stringTest= "+stringTest + "amount=" + amount ;
+  }
 }

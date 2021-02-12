@@ -73,7 +73,7 @@ public class Member {
         cal.add(Calendar.MONTH, 1);
         // convert calendar to date
         Date modifiedDate = cal.getTime();
-        extendedExpireDate = modifiedDate;
+        memberExpireDate = modifiedDate;
     }
     public void setExtendedExpireDate(Date extendedExpireDate){
         this.extendedExpireDate = extendedExpireDate;
@@ -131,21 +131,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
-                "memberName='" + memberName + '\'' +
-                ", memberPhoneNumber='" + memberPhoneNumber + '\'' +
-                ", memberDateOfBirth='" + memberDateOfBirth + '\'' +
-                ", memberId='" + memberId + '\'' +
-                ", joiningDate1=" + joiningDate1 +
-                ", memberJoiningDate=" + memberJoiningDate +
-                ", memberExpireDate=" + memberExpireDate +
-                ", extendedExpireDate=" + extendedExpireDate +
-                ", memberStatus='" + memberStatus + '\'' +
-                ", joiningDATE=" + joiningDATE +
-                ", nextTransaccionID=" + nextTransaccionID +
-                ", lastPayment=" + lastPayment +
-                ", id=" + id +
-                '}';
+        return "memberId= "+memberId +" ";
     }
 
     // todo add phone number, email, address

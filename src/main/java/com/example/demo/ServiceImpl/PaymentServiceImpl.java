@@ -25,9 +25,7 @@ public class PaymentServiceImpl {
         return paymentDao.findAll();
     }
 
-    public String returnStringTest(){
-        return paymentDao.returnStringTest();
-    }
+
 
    public void insertPayment(Payment pay) {
         paymentDao.insertPayment(pay);
@@ -38,11 +36,12 @@ public class PaymentServiceImpl {
         memberDao.extendMembership(mem);*/
        mem.extendExpireDate();
        memberDao.extendMembership(mem);
-       System.out.println(mem);
-
-
-
+       paymentDao.returnStringTest3(pay.getPaymentId());
+       System.out.println(mem.toString());
+       System.out.println(pay.toString());
     }
+
+
 
     public void updatePayment(Payment pay) {
         paymentDao.updatePayment(pay);
@@ -57,4 +56,6 @@ public class PaymentServiceImpl {
         paymentDao.deletePayment(pay);
 
     }
+
+
 }
