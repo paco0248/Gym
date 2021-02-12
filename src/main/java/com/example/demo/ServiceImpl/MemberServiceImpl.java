@@ -17,9 +17,17 @@ public class MemberServiceImpl {
     public List<Member> findAll() {
         return memberDao.findAll();
     }
+
     public Member getLastMemberId(){
         return memberDao.getLastMemberId();
     }
+
+    public String getLastMemberId11feb20(){
+        Member mem = new Member();
+        System.out.println(memberDao.getLastMemberId11feb20(mem).toString());
+        return memberDao.getLastMemberId11feb20(mem).toString();
+    }
+
 
     public void insertMember(Member mem) {
 

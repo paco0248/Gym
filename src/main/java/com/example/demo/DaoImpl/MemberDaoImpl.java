@@ -38,6 +38,17 @@ public class MemberDaoImpl {
                  new MapSqlParameterSource(), new MemberRowMapper());
 
     }
+
+    public Member getLastMemberId11feb20(Member mem) {
+        final String sql = "select * from member order by memberId desc limit 1;";
+
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("memberId", mem.getMemberId());
+        return (Member) template.queryForObject(
+                sql,
+                param, new MemberRowMapper());
+
+    }
     public Member getMemberbyId(int memberId) {
         final String sql = "select * from member  where id::integer=:memberId;";
 

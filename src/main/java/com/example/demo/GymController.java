@@ -29,15 +29,15 @@ public class  GymController {
     public String getLastMemberId(){
         return memberService.getLastMemberId().getMemberId();
     }
-
-
-
+    @GetMapping(value = "/getLastMemberId11feb20")
+    public String getLastMemberId11feb20(){
+        return memberService.getLastMemberId11feb20();
+    }
 
     @GetMapping(value = "/memberList")
     public List<Member> getMembers() {
         return memberService.findAll();
     }
-
     @PostMapping(value = "/createMember")
     public void createMember(@RequestBody Member mem) {
         memberService.insertMember(mem);
