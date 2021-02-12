@@ -131,7 +131,9 @@ public class Member {
 
     @Override
     public String toString() {
-        return "memberId= "+memberId +" ";
+        return "memberId= "+memberId + " " +"id= "+ id
+                + " " + "memberExpireDate= " +
+                memberExpireDate + " " + "memberExtendedDate= " + extendedExpireDate;
     }
 
     // todo add phone number, email, address

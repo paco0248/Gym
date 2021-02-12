@@ -27,11 +27,16 @@ public class MemberServiceImpl {
         System.out.println(memberDao.getLastMemberId11feb20(mem).toString());
         return memberDao.getLastMemberId11feb20(mem).toString();
     }
+    public int getLastId12feb21(){
+        Member mem = new Member();
+        System.out.println(memberDao.getLastId12feb21(mem));
+        return memberDao.getLastId12feb21(mem).getId();
+    }
 
 
     public void insertMember(Member mem) {
 
-        mem.setJoiningDate();
+        mem.setJoiningDate(); //todo necesito esto?
         mem.setExpireDate();
         memberDao.insertMember(mem);
     }

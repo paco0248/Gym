@@ -33,6 +33,11 @@ public class  GymController {
     public String getLastMemberId11feb20(){
         return memberService.getLastMemberId11feb20();
     }
+    @GetMapping(value = "/getLastId12feb21")
+    public int getLastId12feb21(){
+        return memberService.getLastId12feb21();
+    }
+
 
     @GetMapping(value = "/memberList")
     public List<Member> getMembers() {

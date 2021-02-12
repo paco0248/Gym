@@ -36,7 +36,6 @@ public class PaymentServiceImpl {
         memberDao.extendMembership(mem);*/
        mem.extendExpireDate();
        memberDao.extendMembership(mem);
-       paymentDao.returnStringTest3(pay.getPaymentId());
        System.out.println(mem.toString());
        System.out.println(pay.toString());
     }

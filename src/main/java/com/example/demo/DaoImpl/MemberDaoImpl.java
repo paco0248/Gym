@@ -28,9 +28,7 @@ public class MemberDaoImpl {
 
 
     public List<Member> findAll() {
-        return template.query("select * from member", new MemberRowMapper());
-
-    }
+        return template.query("select * from member", new MemberRowMapper()); }
 
     public Member getLastMemberId() {
          return (Member) template.queryForObject(
@@ -49,6 +47,16 @@ public class MemberDaoImpl {
                 param, new MemberRowMapper());
 
     }
+    public Member getLastId12feb21(Member mem) {
+        final String sql = "select * from member order by id desc limit 1;";
+
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("id", mem.getId());
+        return (Member) template.queryForObject(
+                sql,
+                param, new MemberRowMapper());
+    }
+
     public Member getMemberbyId(int memberId) {
         final String sql = "select * from member  where id::integer=:memberId;";
 
