@@ -28,17 +28,13 @@ public class PaymentServiceImpl {
 
 
    public void insertPayment(Payment pay) {
+        pay.setAmount(); //todo poor implementation
         paymentDao.insertPayment(pay);
         Member mem  = memberDao.getMemberbyId(pay.getMemberId());
-
-         /*   mem.extendExpireDate();
-            mem.getExtendedExpireDate();
-            mem.setExpireDate();
-        memberDao.extendMembership(mem);*/
-       mem.extendExpireDate();
+        mem.extendExpireDate();
        memberDao.extendMembership(mem);
        System.out.println(mem.toString());
-       System.out.println(pay.toString());
+       System.out.println();
     }
 
 

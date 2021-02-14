@@ -33,6 +33,7 @@ public class  GymController {
     public String getLastMemberId11feb20(){
         return memberService.getLastMemberId11feb20();
     }
+
     @GetMapping(value = "/getLastId12feb21")
     public int getLastId12feb21(){
         return memberService.getLastId12feb21();
@@ -46,6 +47,11 @@ public class  GymController {
     @PostMapping(value = "/createMember")
     public void createMember(@RequestBody Member mem) {
         memberService.insertMember(mem);
+    }
+
+    @PostMapping(value = "/createMember13feb21")
+    public void createMember13feb21(@RequestBody Member mem) {
+        memberService.insertMember13feb21(mem);
     }
 
     @PostMapping(value = "/createMemberWoId")

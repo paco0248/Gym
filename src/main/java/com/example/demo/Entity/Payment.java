@@ -38,6 +38,12 @@ public class Payment {
   public void setAmount(float amount) {
     this.amount = amount;
   }
+  public void setAmount() {
+    this.amount = 400; //todo make this default amount desde postmanmodifyable desde
+  }
+  public void setDefaultAmount() {
+    amount = 400; //todo make this default amount desde postmanmodifyable desde
+  }
 
   public int getMemberId() {
     return memberId;
@@ -73,4 +79,6 @@ public class Payment {
   public String toString() {
     return "paymentId= "+paymentId +" " + "stringTest= "+stringTest + "amount=" + amount ;
   }
+
+
 }

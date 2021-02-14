@@ -119,6 +119,17 @@ public class PaymentDaoImpl {
 
 
     }
+  /*  public Payment getMemberidfromMember13feb2021(int memberId) {
+        final String sql = "select * from   where id::integer=:memberId;";
+
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("memberId", memberId);
+        return (Payment) template.queryForObject(
+                sql,
+                param, new MemberRowMapper());
+
+    }*/
+
 }
 
 

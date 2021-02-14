@@ -5,13 +5,17 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.example.demo.DaoImpl.MemberDaoImpl;
+import com.example.demo.DaoImpl.PaymentDaoImpl;
 import com.example.demo.Entity.Member;
+import com.example.demo.Entity.Payment;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MemberServiceImpl {
     @Resource
     MemberDaoImpl memberDao;
+    @Resource
+    PaymentDaoImpl paymentDao;
 
 
     public List<Member> findAll() {
@@ -35,17 +39,26 @@ public class MemberServiceImpl {
 
 
     public void insertMember(Member mem) {
-
         mem.setJoiningDate(); //todo necesito esto?
         mem.setExpireDate();
         memberDao.insertMember(mem);
     }
     public void insertMemberWoId(Member mem) {
-
         mem.setMemberId(getLastMemberId().toString());
         mem.setJoiningDate();
         mem.setExpireDate();
         memberDao.insertMemberWoId(mem);
+    }
+    public void insertMember13feb21(Member mem) {
+
+        mem.setExpireDate();
+        memberDao.insertMember(mem);
+        Payment pay = new Payment();
+        pay.setMemberId(memberDao.getLastId12feb21(mem).getId());
+        pay.setAmount();
+       paymentDao.insertPayment(pay);
+
+        System.out.println(mem.toString() + pay.toString());
     }
 
     public void updateMember(Member mem) {
