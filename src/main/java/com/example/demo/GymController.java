@@ -3,16 +3,10 @@ import com.example.demo.Entity.Member;
 import com.example.demo.ServiceImpl.MemberServiceImpl;
 import com.example.demo.Entity.Payment;
 import com.example.demo.ServiceImpl.PaymentServiceImpl;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
 //---------------------------------------------------------------
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -72,7 +66,20 @@ public class  GymController {
         memberService.updateMemberExpireDate(mem);
     }
 
-        ////////////////////////////////////////////////////////////////////
+    @GetMapping(value = "/checkMemberStatus")  //todo broken...
+    public String checkMemberStatus(@RequestBody String id){
+        return memberService.checkMemberStatus(Integer.parseInt(id));
+    }
+    @GetMapping("/checkMemberStatus2ndVersion")    // TODO metodo funciona cuando se crean objetos
+    public String checkMemberStatus2ndVersion(@RequestParam(value = "id") int id) {
+        return memberService.checkMemberStatus(id);
+    }
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////
 
     @Resource
     PaymentServiceImpl paymentService;

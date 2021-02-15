@@ -41,7 +41,9 @@ public class MemberServiceImpl {
     public void insertMember(Member mem) {
         mem.setJoiningDate(); //todo necesito esto?
         mem.setExpireDate();
+        mem.assignMemberStatus();
         memberDao.insertMember(mem);
+        System.out.println(mem.toString());
     }
     public void insertMemberWoId(Member mem) {
         mem.setMemberId(getLastMemberId().toString());
@@ -84,7 +86,15 @@ public class MemberServiceImpl {
        memberDao.deleteCliente(mem);
 
     }
+    public String checkMemberStatus(int id){
 
+        Member mem = memberDao.getMemberbyId(id);
+        mem.assignMemberStatus();
+        //memberDao.getMemberStatus.toString;
+
+        System.out.println(mem.getMemberStatus());
+        return mem.getMemberStatus();
+    }
 
 
 }

@@ -117,6 +117,13 @@ public class Member {
     public void setMemberStatus(String memberStatus) {
         this.memberStatus = memberStatus;
     }
+    public void assignMemberStatus(){
+        Date now = new Date();
+        if(now.after(memberExpireDate)){
+            memberStatus = "Membership expired, make a payment";
+        } else memberStatus = "Status: OK";
+    }
+
     private String memberName;
     private String memberPhoneNumber;
     private String memberDateOfBirth;
