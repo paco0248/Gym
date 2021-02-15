@@ -73,8 +73,8 @@ public class MemberDaoImpl {
 
 
     public void insertMember(Member mem) {
-        final String sql = "insert into member(memberId, memberName, memberPhoneNumber, memberDateOfBirth, memberJoiningDate, memberExpireDate) " +
-                "values(:memberId,:memberName,:memberPhoneNumber,:memberDateOfBirth, :memberJoiningDate, :memberExpireDate)";
+        final String sql = "insert into member(memberId, memberName, memberPhoneNumber, memberDateOfBirth, memberJoiningDate, memberExpireDate, memberStatus) " +
+                "values(:memberId,:memberName,:memberPhoneNumber,:memberDateOfBirth, :memberJoiningDate, :memberExpireDate, :memberStatus)";
 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
@@ -84,7 +84,8 @@ public class MemberDaoImpl {
                 .addValue("memberDateOfBirth", mem.getMemberDateOfBirth())
                 .addValue("memberJoiningDate", mem.getMemberJoiningDate())
                 .addValue("memberExpireDate", mem.getMemberExpireDate())
-                .addValue("id", mem.getId());
+                .addValue("id", mem.getId())
+                .addValue("memberStatus", mem.getMemberStatus());
         template.update(sql,param, holder);
 
     }

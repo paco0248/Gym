@@ -21,6 +21,7 @@ public class MemberRowMapper implements RowMapper {
         mem.setExpireDate(rs.getDate("memberExpireDate"));
         mem.setExtendedExpireDate(rs.getDate("memberExpireDate"));
         mem.setId(rs.getInt("id"));
+        mem.setMemberStatus(rs.getString("memberStatus"));
 
 
         return mem;

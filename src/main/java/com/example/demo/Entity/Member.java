@@ -110,15 +110,23 @@ public class Member {
         this.id = id;
     }
 
+    public String getMemberStatus() {
+        return memberStatus;
+    }
+
+    public void setMemberStatus(String memberStatus) {
+        this.memberStatus = memberStatus;
+    }
     private String memberName;
     private String memberPhoneNumber;
     private String memberDateOfBirth;
+
     private String memberId;
     private Date joiningDate1 = new Date();
     private Date memberJoiningDate = new Date();
     private Date memberExpireDate;
-    private Date extendedExpireDate;
 
+    private Date extendedExpireDate;
 
 
     private String memberStatus = "please verify...";
@@ -133,7 +141,8 @@ public class Member {
     public String toString() {
         return "memberId= "+memberId + " " +"id= "+ id
                 + " " + "memberExpireDate= " +
-                memberExpireDate + " " + "memberExtendedDate= " + extendedExpireDate;
+                memberExpireDate + " " + "memberExtendedDate= " + extendedExpireDate
+                + "memberStatus= " + memberStatus;
     }
 
     // todo add phone number, email, address

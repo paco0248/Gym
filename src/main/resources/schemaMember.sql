@@ -6,6 +6,7 @@ CREATE TABLE member
  memberDateOfBirth varchar(100) DEFAULT NULL,
  memberJoiningDate DATE NOT NULL DEFAULT CURRENT_DATE,
  memberExpireDate DATE DEFAULT NULL,
+ memberStatus varchar(100) DEFAULT NULL,
  id SERIAL NOT NULL,
  PRIMARY KEY (id)
 );
