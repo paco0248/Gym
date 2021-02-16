@@ -205,8 +205,91 @@ public class MemberDaoImpl {
 
     }
 
+ /*   public Member getMemberbyId(int memberId) {
+        final String sql = "select * from member  where id::integer=:memberId;";
+
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("memberId", memberId);
+        return (Member) template.queryForObject(
+                sql,
+                param, new MemberRowMapper());
+
+    }*/
+    public void updateMemberStatusOnDB(Member mem) {
+        final String sql = "update member set memberStatus=:memberStatus  where id=:id;";  //::integer
+
+        KeyHolder holder = new GeneratedKeyHolder();
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("id", mem.getId())
+                .addValue("memberStatus", mem.getMemberStatus())
+                .addValue("memberId", mem.getMemberId())
+                //.addValue("memberExpireDate", mem.getExtendedExpireDate())
+                .addValue("memberExpireDate", mem.getMemberExpireDate());
+        template.update(sql, param, holder);
+    }
+
+    public void updateMemberStatusOnDB2ndVersion(Member mem) {
+        final String sql = "update member set memberStatus=:memberStatus  where id=:id;";
+
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("id", mem.getId())
+                .addValue("memberStatus", mem.getMemberStatus());
+
+          template.queryForObject(
+                sql,
+                param, new MemberRowMapper());
 
     }
+
+    public void updateStatusOnDB(Member mem) {
+        final String sql = "update member set memberStatus=:memberStatus  where id=:id;";
+
+        KeyHolder holder = new GeneratedKeyHolder();
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("id", mem.getId())
+                .addValue("memberId", mem.getMemberId())
+                .addValue("memberName", mem.getMemberName())
+                .addValue("memberDateOfBirth", mem.getMemberDateOfBirth())
+                .addValue("memberPhoneNumber", mem.getMemberPhoneNumber())
+                .addValue("memberJoiningDate", mem.getMemberJoiningDate())
+                .addValue("memberExpireDate", mem.getMemberExpireDate())
+                .addValue("memberStatus", mem.getMemberStatus());
+
+        template.update(sql,param, holder);
+    }
+
+    public void executeUpdateStatusOnDB (Member mem) {
+        final String sql = "update member set memberStatus=:memberStatus  where id=:id;";
+
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("id", mem.getId());
+        map.put("memberName", mem.getMemberName());
+        map.put("memberPhoneNumber", mem.getMemberPhoneNumber());
+        map.put("memberDateOfBirth", mem.getMemberDateOfBirth());
+        map.put("memberJoiningDate", mem.getMemberJoiningDate());
+        map.put("memberStatus", mem.getMemberStatus());
+
+        template.execute(sql, map, new PreparedStatementCallback<Object>() {
+            @Override
+            public Object doInPreparedStatement(PreparedStatement ps)
+                    throws SQLException, DataAccessException {
+                return ps.executeUpdate();
+            }
+        });
+
+    }
+    }
+/*
+    public List<Member> findAll() {
+        return template.query("select * from member", new MemberRowMapper()); }
+
+*/
+
+
+
+
+
 
 
 

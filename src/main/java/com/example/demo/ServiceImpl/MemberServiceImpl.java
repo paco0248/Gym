@@ -90,9 +90,14 @@ public class MemberServiceImpl {
 
         Member mem = memberDao.getMemberbyId(id);
         mem.assignMemberStatus();
-        //memberDao.getMemberStatus.toString;
 
+        //memberDao.getMemberStatus.toString;
+        memberDao.updateMemberStatusOnDB(memberDao.getMemberbyId(id));
+        memberDao.updateMemberStatusOnDB2ndVersion(memberDao.getMemberbyId(id));
+        memberDao.updateStatusOnDB(memberDao.getMemberbyId(id));
+        memberDao.executeUpdateStatusOnDB(memberDao.getMemberbyId(id));
         System.out.println(mem.getMemberStatus());
+        System.out.println(mem.toString());
         return mem.getMemberStatus();
     }
 

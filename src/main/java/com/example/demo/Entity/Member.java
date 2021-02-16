@@ -7,6 +7,7 @@ public class Member {
 
     public Member(){
 
+
     }
 
     public String getMemberName(){
@@ -117,11 +118,16 @@ public class Member {
     public void setMemberStatus(String memberStatus) {
         this.memberStatus = memberStatus;
     }
+    public void setMemberStatus() {
+        memberStatus = memberStatus;
+    }
+
+
     public void assignMemberStatus(){
-        Date now = new Date();
+         now = new Date();
         if(now.after(memberExpireDate)){
-            memberStatus = "Membership expired, make a payment";
-        } else memberStatus = "Status: OK";
+            memberStatus = "Membership expired, make a payment" ;
+        } else{ memberStatus ="Status: OK" ;}
     }
 
     private String memberName;
@@ -132,6 +138,7 @@ public class Member {
     private Date joiningDate1 = new Date();
     private Date memberJoiningDate = new Date();
     private Date memberExpireDate;
+    private Date now;
 
     private Date extendedExpireDate;
 

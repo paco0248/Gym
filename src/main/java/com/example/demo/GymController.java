@@ -67,8 +67,8 @@ public class  GymController {
     }
 
     @GetMapping(value = "/checkMemberStatus")  //todo broken...
-    public String checkMemberStatus(@RequestBody String id){
-        return memberService.checkMemberStatus(Integer.parseInt(id));
+    public String checkMemberStatus(@RequestBody int id){
+        return memberService.checkMemberStatus(id);
     }
     @GetMapping("/checkMemberStatus2ndVersion")    // TODO metodo funciona cuando se crean objetos
     public String checkMemberStatus2ndVersion(@RequestParam(value = "id") int id) {
