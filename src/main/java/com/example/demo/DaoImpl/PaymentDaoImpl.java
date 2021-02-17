@@ -60,13 +60,6 @@ public class PaymentDaoImpl {
     }
 
 
-
-
-
-
-
-
-
         public void updatePayment(Payment pay) {
         final String sql = "update payment set memberId=:memberId, paymentDate=:paymentDate," +
                 " amount=:amount where paymentId=:paymentId";
