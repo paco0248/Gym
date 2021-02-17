@@ -89,11 +89,13 @@ public class MemberServiceImpl {
     public String checkMemberStatus(int id){
 
         Member mem = memberDao.getMemberbyId(id);
+        mem.setExpireDate(mem.getMemberExpireDate());
         mem.assignMemberStatus();
+
 
         //memberDao.getMemberStatus.toString;
         memberDao.updateMemberStatusOnDB(memberDao.getMemberbyId(id));
-        memberDao.updateMemberStatusOnDB2ndVersion(memberDao.getMemberbyId(id));
+      //  memberDao.updateMemberStatusOnDB2ndVersion(memberDao.getMemberbyId(id));
         memberDao.updateStatusOnDB(memberDao.getMemberbyId(id));
         memberDao.executeUpdateStatusOnDB(memberDao.getMemberbyId(id));
         System.out.println(mem.getMemberStatus());

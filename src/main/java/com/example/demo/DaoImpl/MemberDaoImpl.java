@@ -228,7 +228,7 @@ public class MemberDaoImpl {
         template.update(sql, param, holder);
     }
 
-    public void updateMemberStatusOnDB2ndVersion(Member mem) {
+    /*public void updateMemberStatusOnDB2ndVersion(Member mem) {
         final String sql = "update member set memberStatus=:memberStatus  where id=:id;";
 
         SqlParameterSource param = new MapSqlParameterSource()
@@ -239,7 +239,7 @@ public class MemberDaoImpl {
                 sql,
                 param, new MemberRowMapper());
 
-    }
+    }*/
 
     public void updateStatusOnDB(Member mem) {
         final String sql = "update member set memberStatus=:memberStatus  where id=:id;";
