@@ -62,6 +62,7 @@ public class MemberDaoImpl {
 
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("memberId", memberId);
+
          return (Member) template.queryForObject(
                  sql,
                  param, new MemberRowMapper());
@@ -221,14 +222,14 @@ public class MemberDaoImpl {
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("id", mem.getId())
-                .addValue("memberStatus", mem.getMemberStatus())
-                .addValue("memberId", mem.getMemberId())
+                .addValue("memberStatus", mem.getMemberStatus());
+               // .addValue("memberId", mem.getMemberId())
                 //.addValue("memberExpireDate", mem.getExtendedExpireDate())
-                .addValue("memberExpireDate", mem.getMemberExpireDate());
+               // .addValue("memberExpireDate", mem.getMemberExpireDate());
         template.update(sql, param, holder);
     }
 
-    /*public void updateMemberStatusOnDB2ndVersion(Member mem) {
+  /* public void updateMemberStatusOnDB2ndVersion(Member mem) {
         final String sql = "update member set memberStatus=:memberStatus  where id=:id;";
 
         SqlParameterSource param = new MapSqlParameterSource()
@@ -239,7 +240,7 @@ public class MemberDaoImpl {
                 sql,
                 param, new MemberRowMapper());
 
-    }*/
+    }
 
     public void updateStatusOnDB(Member mem) {
         final String sql = "update member set memberStatus=:memberStatus  where id=:id;";
@@ -278,7 +279,7 @@ public class MemberDaoImpl {
             }
         });
 
-    }
+    }*/
     }
 /*
     public List<Member> findAll() {

@@ -21,4 +21,14 @@ CREATE TABLE payment
  PRIMARY KEY (paymentId)
 );
 
+CREATE TABLE membershipPriceChangehistory
+(
+  priceChangeId SERIAL NOT NULL ,
+ priceChangeDate DATE NOT NULL DEFAULT CURRENT_DATE,
+ amount NUMERIC(5,2) DEFAULT NULL,
+ comments varchar(100) DEFAULT NULL,
+ PRIMARY KEY (priceChangeId)
+);
+
+
 

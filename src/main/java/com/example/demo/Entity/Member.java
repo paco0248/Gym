@@ -7,7 +7,6 @@ public class Member {
 
     public Member(){
 
-
     }
 
     public String getMemberName(){
@@ -122,22 +121,31 @@ public class Member {
         memberStatus = memberStatus;
     }
 
+    public Date getNow() {
+        return now;
+    }
+
+    public void setNow() {
+        now = new Date();
+    }
+
 
     public void assignMemberStatus(){
-         now = new Date();
         if(now.after(memberExpireDate)){
             memberStatus = "Membership expired, make a payment" ;
         } else{ memberStatus ="Status: OK" ;}
     }
-
     private String memberName;
     private String memberPhoneNumber;
-    private String memberDateOfBirth;
 
+    private String memberDateOfBirth;
     private String memberId;
     private Date joiningDate1 = new Date();
     private Date memberJoiningDate = new Date();
+
     private Date memberExpireDate;
+
+
     private Date now;
 
     private Date extendedExpireDate;
@@ -156,7 +164,7 @@ public class Member {
         return "memberId= "+memberId + " " +"id= "+ id
                 + " " + "memberExpireDate= " +
                 memberExpireDate + " " + "memberExtendedDate= " + extendedExpireDate
-                + "memberStatus= " + memberStatus;
+                + "memberStatus= " + memberStatus + "now= " + now;
     }
 
     // todo add phone number, email, address

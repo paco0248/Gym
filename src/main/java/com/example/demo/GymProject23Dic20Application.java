@@ -17,7 +17,8 @@ public class GymProject23Dic20Application {
 
         Member mem = new Member();
         mem.extendExpireDate();
-        String a = mem.getExtendedExpireDate().toString();
+        mem.setNow();
+        String a = mem.toString();
 
 
 
