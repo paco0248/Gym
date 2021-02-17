@@ -18,6 +18,8 @@ public class MembershipPriceChangehistoryRowMapper implements RowMapper {
 
         pri.setPriceChangeId(rs.getInt("priceChangeId"));
         pri.setAmount(rs.getFloat("amount"));
+        pri.setPriceChangeDate(rs.getDate("priceChangeDate"));
+        pri.setComments(rs.getString("comments"));
 
 
 

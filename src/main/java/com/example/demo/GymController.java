@@ -1,7 +1,9 @@
 package com.example.demo;
 import com.example.demo.Entity.Member;
+import com.example.demo.Entity.MembershipPriceChangehistory;
 import com.example.demo.ServiceImpl.MemberServiceImpl;
 import com.example.demo.Entity.Payment;
+import com.example.demo.ServiceImpl.MembershipPriceChangehistoryServiceImpl;
 import com.example.demo.ServiceImpl.PaymentServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
@@ -117,5 +119,13 @@ public class  GymController {
     public void deletePayment(@RequestBody Payment pay) {
         paymentService.deletePayment(pay);
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @Resource
+    MembershipPriceChangehistoryServiceImpl membershipPriceChangehistoryService;
+
+    @PostMapping(value = "/createPriceChange")
+    public void insertPriceChange(@RequestBody MembershipPriceChangehistory pri){
+        membershipPriceChangehistoryService.createPriceChange(pri);
+    }
 }

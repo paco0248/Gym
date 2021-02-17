@@ -38,6 +38,30 @@ public class MembershipPriceChangehistoryDaoImpl {
 
     }
 
+    public MembershipPriceChangehistory getLastPriceMod(int priceChangeId){
+            final String sql ="select * from membershipPriceChangehistory order by priceChangeid desc limit 1;";
+
+            SqlParameterSource param = new MapSqlParameterSource()
+                    .addValue("priceChangeId", priceChangeId);
+            return (MembershipPriceChangehistory)
+                    template.queryForObject(sql, param, new MembershipPriceChangehistoryRowMapper());
+
+    }
+
+    public void createPriceChange(MembershipPriceChangehistory pri){
+        final String sql = "insert into membershipPriceChangehistory(amount, comments, priceChangeDate)" +
+                " values(:amount, :comments, :priceChangeDate);";
+       KeyHolder holder = new GeneratedKeyHolder();
+       SqlParameterSource param = new MapSqlParameterSource()
+               .addValue("amount", pri.getAmount())
+               .addValue("comments", pri.getComments())
+               //.addValue("priceChangeId", pri.getPriceChangeId())
+               .addValue("priceChangeDate", pri.getPriceChangeDate());
+
+       template.update(sql, param, holder);
+
+    }
+
 
 
 

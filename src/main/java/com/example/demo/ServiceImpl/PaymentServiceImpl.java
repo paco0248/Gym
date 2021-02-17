@@ -8,6 +8,7 @@ import com.example.demo.DaoImpl.MemberDaoImpl;
 import com.example.demo.DaoImpl.MembershipPriceChangehistoryDaoImpl;
 import com.example.demo.DaoImpl.PaymentDaoImpl;
 import com.example.demo.Entity.Member;
+import com.example.demo.Entity.MembershipPriceChangehistory;
 import com.example.demo.Entity.Payment;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +33,7 @@ public class PaymentServiceImpl {
 
 
    public void insertPayment(Payment pay) {
-        //pay.setAmount(); //todo poor implementation
+        pay.setAmount(); //todo poor implementation
         paymentDao.insertPayment(pay);
         Member mem  = memberDao.getMemberbyId(pay.getMemberId());
         mem.extendExpireDate();
@@ -42,7 +43,11 @@ public class PaymentServiceImpl {
     }
 
     public void insertPaymentTEST(Payment pay) {
-        pay.setAmount(membershipPriceChangehistoryDao.getAmountFromDBbyId(1).getAmount());
+
+
+        MembershipPriceChangehistory pri = new MembershipPriceChangehistory();
+
+        pay.setAmount(membershipPriceChangehistoryDao.getLastPriceMod(pri.getPriceChangeId()).getAmount());//todo change 1 to last change added on MPChistory
         //pay.setAmount(); //todo poor implementation
         paymentDao.insertPayment(pay);
         Member mem  = memberDao.getMemberbyId(pay.getMemberId());
@@ -51,6 +56,7 @@ public class PaymentServiceImpl {
         System.out.println(mem.toString());
 
         System.out.println(pay.toString());
+        System.out.println(pri.toString());
     }
 
 

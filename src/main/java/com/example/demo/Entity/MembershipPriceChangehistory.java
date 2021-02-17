@@ -47,6 +47,17 @@ public class MembershipPriceChangehistory {
     public void setPriceChangeDate(Date priceChangeDate) {
         this.priceChangeDate = priceChangeDate;
     }
+    public void setPriceChangeDate() {
+        this.priceChangeDate = new Date();
+    }
+
+
+
+    @Override
+    public String toString( ){
+        return "PriceChangeID= " + priceChangeId + "PriceChangeDate= " + priceChangeDate + "amount= " + amount + "comments= " + comments;
+
+    }
 
 
 

@@ -23,3 +23,5 @@ mover update member sql statement frm to ...
 ACCESS DENIER
 CHECAR PAGO
 
+setamount throws error because missing arguments
+

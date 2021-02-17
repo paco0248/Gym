@@ -38,9 +38,9 @@ public class Payment {
   public void setAmount(float amount) {
     this.amount = amount;
   }
-  /*public void setAmount() {
-    this.amount = 400; //todo make this default amount desde postmanmodifyable desde
-  }*/
+  public void setAmount() {
+    this.amount = 000; //todo make this default amount desde postmanmodifyable desde
+  }
   public void setDefaultAmount() {
     amount = 400; //todo make this default amount desde postmanmodifyable desde
   }
