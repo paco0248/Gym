@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.example.demo.DaoImpl.MemberDaoImpl;
+import com.example.demo.DaoImpl.MembershipPriceChangehistoryDaoImpl;
 import com.example.demo.DaoImpl.PaymentDaoImpl;
 import com.example.demo.Entity.Member;
 import com.example.demo.Entity.Payment;
@@ -19,7 +20,10 @@ public class PaymentServiceImpl {
     MemberDaoImpl memberDao;
 
     @Resource
-    MemberServiceImpl memberService;
+    MemberServiceImpl memberService;  //todo esto no deberia estar aqui
+    @Resource
+    MembershipPriceChangehistoryDaoImpl membershipPriceChangehistoryDao;
+
 
     public List<Payment> findAll() {
         return paymentDao.findAll();
@@ -28,7 +32,7 @@ public class PaymentServiceImpl {
 
 
    public void insertPayment(Payment pay) {
-        pay.setAmount(); //todo poor implementation
+        //pay.setAmount(); //todo poor implementation
         paymentDao.insertPayment(pay);
         Member mem  = memberDao.getMemberbyId(pay.getMemberId());
         mem.extendExpireDate();
@@ -36,6 +40,19 @@ public class PaymentServiceImpl {
        System.out.println(mem.toString());
        System.out.println();
     }
+
+    public void insertPaymentTEST(Payment pay) {
+        pay.setAmount(membershipPriceChangehistoryDao.getAmountFromDBbyId(1).getAmount());
+        //pay.setAmount(); //todo poor implementation
+        paymentDao.insertPayment(pay);
+        Member mem  = memberDao.getMemberbyId(pay.getMemberId());
+        mem.extendExpireDate();
+        memberDao.extendMembership(mem);
+        System.out.println(mem.toString());
+
+        System.out.println(pay.toString());
+    }
+
 
 
 

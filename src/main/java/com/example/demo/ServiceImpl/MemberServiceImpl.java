@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.example.demo.DaoImpl.MemberDaoImpl;
+import com.example.demo.DaoImpl.MembershipPriceChangehistoryDaoImpl;
 import com.example.demo.DaoImpl.PaymentDaoImpl;
 import com.example.demo.Entity.Member;
 import com.example.demo.Entity.Payment;
@@ -16,6 +17,8 @@ public class MemberServiceImpl {
     MemberDaoImpl memberDao;
     @Resource
     PaymentDaoImpl paymentDao;
+    @Resource
+    MembershipPriceChangehistoryDaoImpl membershipPriceChangehistoryDao;
 
 
     public List<Member> findAll() {
@@ -50,8 +53,9 @@ public class MemberServiceImpl {
         mem.setJoiningDate();
         mem.setExpireDate();
         memberDao.insertMemberWoId(mem);
+        membershipPriceChangehistoryDao.getAmountFromDBbyId(1); //todo que pedo aqui
     }
-    public void insertMember13feb21(Member mem) {
+    /*public void insertMember13feb21(Member mem) {
 
         mem.setExpireDate();
         memberDao.insertMember(mem);
@@ -61,7 +65,7 @@ public class MemberServiceImpl {
        paymentDao.insertPayment(pay);
 
         System.out.println(mem.toString() + pay.toString());
-    }
+    }*/
 
     public void updateMember(Member mem) {
         memberDao.updateMember(mem);

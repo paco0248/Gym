@@ -43,10 +43,10 @@ public class  GymController {
         memberService.insertMember(mem);
     }
 
-    @PostMapping(value = "/createMember13feb21")
+  /*  @PostMapping(value = "/createMember13feb21")
     public void createMember13feb21(@RequestBody Member mem) {
         memberService.insertMember13feb21(mem);
-    }
+    }*/
 
     @PostMapping(value = "/createMemberWoId")
     public void createMemberWoId(@RequestBody Member mem) {
@@ -100,6 +100,11 @@ public class  GymController {
     @PostMapping(value = "/createPayment")
     public void createPayment(@RequestBody Payment pay) {
         paymentService.insertPayment(pay);
+    }
+
+    @PostMapping(value = "/createPaymentTest")
+    public void createPaymentTest(@RequestBody Payment pay) {
+        paymentService.insertPaymentTEST(pay);
     }
 
     @PutMapping(value = "/updatePayment")

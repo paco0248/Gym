@@ -14,7 +14,8 @@ public class PaymentRowMapper implements RowMapper {
 
         pay.setPaymentId(rs.getInt("paymentId"));
         pay.setPaymentDate(rs.getDate("paymentDate"));
-        pay.setAmount(rs.getFloat("amount"));
+        //pay.setAmount(rs.getFloat("amount")); //todo undo
+        pay.setAmount(pay.getAmount());
 
         pay.setStringTest(rs.getString("stringTest"));
         pay.setMemberId(rs.getInt("memberId"));
