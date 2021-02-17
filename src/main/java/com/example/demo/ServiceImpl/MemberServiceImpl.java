@@ -31,7 +31,7 @@ public class MemberServiceImpl {
         System.out.println(memberDao.getLastMemberId11feb20(mem).toString());
         return memberDao.getLastMemberId11feb20(mem).toString();
     }
-    public int getLastId12feb21(){
+    public int getLastId12feb21(){ //todo this one works
         Member mem = new Member();
         System.out.println(memberDao.getLastId12feb21(mem));
         return memberDao.getLastId12feb21(mem).getId();

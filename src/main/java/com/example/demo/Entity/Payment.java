@@ -80,5 +80,9 @@ public class Payment {
     return "paymentId= "+paymentId +" " + "stringTest= "+stringTest + "amount=" + amount ;
   }
 
+///////////////////////////////////////// todo price change history needs its own class?
+
+
+
 
 }
