@@ -5,44 +5,46 @@ import java.util.*;
 
 public class Member {
 
-    public Member(){
+    public Member() {
 
     }
 
-    public String getMemberName(){
+    public String getMemberName() {
         return memberName;
     }
 
-    public void setMemberName (String memberName){
+    public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 
-    public String getMemberPhoneNumber(){
+    public String getMemberPhoneNumber() {
         return memberPhoneNumber;
     }
 
-    public void setMemberPhoneNumber (String memberPhoneNumber){
+    public void setMemberPhoneNumber(String memberPhoneNumber) {
         this.memberPhoneNumber = memberPhoneNumber;
     }
 
-    public String getMemberDateOfBirth(){
+    public String getMemberDateOfBirth() {
         return memberDateOfBirth;
     }
 
-    public void setMemberDateOfBirth (String memberDateOfBirth){
+    public void setMemberDateOfBirth(String memberDateOfBirth) {
         this.memberDateOfBirth = memberDateOfBirth;
     }
 
-    public String getMemberId(String memberId){
+    public String getMemberId(String memberId) {
         return memberId;
     }
-    public String getMemberId(){
+
+    public String getMemberId() {
         return memberId;
     }
+
     public void setMemberId(String memberId) {
         this.memberId = memberId;
         //UUID.randomUUID().toString();
-   //todo automate gym id
+        //todo automate gym id
     }
 
     public void setMemberId(List<Member> memberList) {
@@ -51,21 +53,23 @@ public class Member {
         //todo automate gym id
     }
 
-    public Date getMemberJoiningDate(){
+    public Date getMemberJoiningDate() {
         return memberJoiningDate;
     }
 
-    public void setMemberJoiningDate(Date memberJoiningDate){ //Todo metodo obsoleto porque?
+    public void setMemberJoiningDate(Date memberJoiningDate) { //Todo metodo obsoleto porque?
         this.memberJoiningDate = memberJoiningDate;
     }
 
     public Date getMemberExpireDate() {
         return memberExpireDate;
     }
-    public Date getExtendedExpireDate(){
+
+    public Date getExtendedExpireDate() {
         return extendedExpireDate;
     }
-    public void extendExpireDate(){
+
+    public void extendExpireDate() {
         extendedExpireDate = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(extendedExpireDate);
@@ -75,15 +79,17 @@ public class Member {
         Date modifiedDate = cal.getTime();
         memberExpireDate = modifiedDate;
     }
-    public void setExtendedExpireDate(Date extendedExpireDate){
+
+    public void setExtendedExpireDate(Date extendedExpireDate) {
         this.extendedExpireDate = extendedExpireDate;
     }
 
     public void setExpireDate(Date memberExpireDate) {
         this.memberExpireDate = memberExpireDate;
     }
+
     public void setExpireDate() {
-       // this.memberExpireDate = getJoiningdate1.;
+        // this.memberExpireDate = getJoiningdate1.;
         Calendar cal = Calendar.getInstance();
         cal.setTime(joiningDate1);
         // manipulate date
@@ -94,18 +100,18 @@ public class Member {
     }
 
 
-
-
-
     public void setJoiningDate(Date memberJoiningDate) {
         this.memberJoiningDate = memberJoiningDate;
     }
-    public void setJoiningDate(){
+
+    public void setJoiningDate() {
         memberJoiningDate = memberJoiningDate;
     }
-    public int getId(){
+
+    public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -117,6 +123,7 @@ public class Member {
     public void setMemberStatus(String memberStatus) {
         this.memberStatus = memberStatus;
     }
+
     public void setMemberStatus() {
         memberStatus = memberStatus;
     }
@@ -129,12 +136,19 @@ public class Member {
         now = new Date();
     }
 
-
-    public void assignMemberStatus(){
-        if(now.after(memberExpireDate)){
-            memberStatus = "Membership expired, make a payment" ;
-        } else{ memberStatus ="Status: OK" ;}
+    public void setNow(Date now) {
+        now = new Date();
     }
+
+
+    public void assignMemberStatus() {
+        if (now.after(memberExpireDate)) {
+            memberStatus = "Membership expired, make a payment";
+        } else {
+            memberStatus = "Status: OK";
+        }
+    }
+
     private String memberName;
     private String memberPhoneNumber;
 
@@ -161,7 +175,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return "memberId= "+memberId + " " +"id= "+ id
+        return "memberId= " + memberId + " " + "id= " + id
                 + " " + "memberExpireDate= " +
                 memberExpireDate + " " + "memberExtendedDate= " + extendedExpireDate
                 + "memberStatus= " + memberStatus + "now= " + now;

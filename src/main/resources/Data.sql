@@ -1,5 +1,3 @@
-insert into member(memberId, memberName, memberPhoneNumber, memberDateOfBirth, memberJoiningDate, memberExpireDate)
-values('1','Jack','3921112222','15, enero, 1999', '31-01-2019', '31-01-2021');
 
 insert into payment(paymentId, paymentDate, amount, memberId) values('15feb2021','500','1');
 

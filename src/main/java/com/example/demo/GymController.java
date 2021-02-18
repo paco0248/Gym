@@ -40,6 +40,13 @@ public class  GymController {
     public List<Member> getMembers() {
         return memberService.findAll();
     }
+
+    @GetMapping(value = "/memberListWithStatus")
+    public List<Member> getMembersAndCheckStatus() {
+        return memberService.findAllAndCheckStatus();
+    }
+
+
     @PostMapping(value = "/createMember")
     public void createMember(@RequestBody Member mem) {
         memberService.insertMember(mem);

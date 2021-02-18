@@ -25,6 +25,7 @@ public class MemberRowMapper implements RowMapper {
         mem.setMemberStatus();
 
 
+
         return mem;
     }
 }

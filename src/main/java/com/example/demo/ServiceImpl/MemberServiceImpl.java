@@ -25,6 +25,20 @@ public class MemberServiceImpl {
         return memberDao.findAll();
     }
 
+    public List<Member> findAllAndCheckStatus() {
+        for(Member e : memberDao.findAll()){
+            e.setExpireDate(e.getMemberExpireDate());
+            e.setNow();
+            e.assignMemberStatus();
+            memberDao.updateMemberStatusOnDB(e);
+            System.out.println(e.toString());
+        }
+
+        return memberDao.findAll();
+    }
+
+
+
     public Member getLastMemberId(){
         return memberDao.getLastMemberId();
     }
@@ -104,7 +118,7 @@ public class MemberServiceImpl {
         //memberDao.executeUpdateStatusOnDB(memberDao.getMemberbyId(id));
         System.out.println(mem.getMemberStatus());
         System.out.println(mem.toString());
-        return mem.getMemberStatus();
+        return mem.getMemberStatus() + " " +mem.getNow().toString(); //todo borrar ultima parte
     }
 
 
