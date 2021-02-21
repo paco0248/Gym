@@ -22,6 +22,8 @@ public class MemberServiceImpl {
 
 
     public List<Member> findAll() {
+        for(Member e: memberDao.findAll())
+            System.out.println(e.toString());
         return memberDao.findAll();
     }
 
@@ -58,6 +60,7 @@ public class MemberServiceImpl {
     public void insertMember(Member mem) {
         mem.setJoiningDate(); //todo necesito esto?
         mem.setExpireDate();
+        mem.setNow();
         mem.assignMemberStatus();
         memberDao.insertMember(mem);
         System.out.println(mem.toString());

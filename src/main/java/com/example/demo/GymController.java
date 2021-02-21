@@ -25,7 +25,8 @@ public class  GymController {
     public String getLastMemberId(){
         return memberService.getLastMemberId().getMemberId();
     }
-    @GetMapping(value = "/getLastMemberId11feb20")
+
+    @GetMapping(value = "/getLastMemberCreated") //todo return member object to allow json format for more utility
     public String getLastMemberId11feb20(){
         return memberService.getLastMemberId11feb20();
     }
@@ -51,11 +52,6 @@ public class  GymController {
     public void createMember(@RequestBody Member mem) {
         memberService.insertMember(mem);
     }
-
-  /*  @PostMapping(value = "/createMember13feb21")
-    public void createMember13feb21(@RequestBody Member mem) {
-        memberService.insertMember13feb21(mem);
-    }*/
 
     @PostMapping(value = "/createMemberWoId")
     public void createMemberWoId(@RequestBody Member mem) {

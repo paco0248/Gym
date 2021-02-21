@@ -124,9 +124,9 @@ public class Member {
         this.memberStatus = memberStatus;
     }
 
-    public void setMemberStatus() {
+    /*public void setMemberStatus() {
         memberStatus = memberStatus;
-    }
+    }*/
 
     public Date getNow() {
         return now;
